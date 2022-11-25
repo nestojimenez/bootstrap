@@ -14,9 +14,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nestojimenez/bootstrap/issues"
-  },
-  "homepage": "https://github.com/nestojimenez/bootstrap#readme",
-  "dependencies": {
-    "bootstrap": "^5.2.2"
   }
 }
