@@ -14,5 +14,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nestojimenez/bootstrap/issues"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.10.2"
   }
 }

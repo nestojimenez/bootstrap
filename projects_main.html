@@ -3,6 +3,7 @@
         <!--<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">-->
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
         <style>
             
             [class*="collapse"]{
@@ -59,77 +60,58 @@
         </nav>
         
         <!--Picture and Text-------------------
+            
         --------------------------------------->
-        <div class="container-fluid m-0 p-0">
+        <img class = "img-fluid h-100 w-100 m-0 p-0 img-thumbnail" src="images/Grafica de Ciclo  Rev 1.png" style="object-fit: cover">
 
-            <div class="row h-75 m-0 p-0 justify-content-start">
+        <div class="container-fluid m-0 mt-2 p-0" style="position: relative;
+        z-index: 999;
+        margin: 0 auto;
+        left: 0%;
+        right: 0;
+        top: -100%; /* Adjust this value to move the positioned div up and down */
+        text-align: left;
+        width: 100%;">
 
-                <div class="col-md-3 col-xs-3 h-100 m-0 p-0">
-                    <div class="wrapper">
-                        <!-- Sidebar -->
-                        <nav id="sidebar">
-                            <div class="sidebar-header">
-                                <h3>Bootstrap Sidebar</h3>
+            <div class="row h-100 m-0 p-0 justify-content-start">
+
+                <div class="col-md-2 col-xs-2 h-100 m-0 p-0">
+                    <!-- Sidebar -->
+                    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+                        <div class="position-sticky">
+                            <div class="list-group list-group-flush mx-3 mt-4">
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple fw-bold" aria-current="true">
+                                <i class="fas bi bi-robot fa-fw me-3"></i><span>Project Options</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                                <i class="fas bi bi-cloud-arrow-up fa-fw me-3"></i><span>Load Project</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                                class="fas bi bi-eye fa-fw me-3"></i><span>View Project</span></a>
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                                class="fas bi bi-rocket-takeoff fa-fw me-3"></i><span>Project Tools</span></a>
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                                <i class="fas bi bi-card-checklist fa-fw me-3"></i><span>Project List</span>
+                            </a>
+                            
                             </div>
-                    
-                            <ul class="list-unstyled components">
-                                <p>Dummy Heading</p>
-                                <li class="active">
-                                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                                        <li>
-                                            <a href="#">Home 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Home 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Home 3</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">About</a>
-                                </li>
-                                <li>
-                                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                                        <li>
-                                            <a href="#">Page 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Page 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Page 3</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Portfolio</a>
-                                </li>
-                                <li>
-                                    <a href="#">Contact</a>
-                                </li>
-                            </ul>
+                        </div>
                         </nav>
-                    
-                    </div>
+                        <!-- Sidebar -->
                 </div>
 
-                <div class="col-md-6 col-xs-6 h-100 m-0 p-0">
-                    <img class = "img-fluid h-100 w-100 m-0 p-0" src="images/ImprovementCycle.png" style="object-fit: cover">
+                <div class="col-md-7 col-xs-7 h-75 m-0 p-0">
+                    <!--<img class = "img-fluid h-100 w-100 m-0 p-0 img-thumbnail" src="images/Grafica de Ciclo  Rev 1.png" style="object-fit: cover">-->
                 </div>
 
                 <div class="col-md-3 col-xs-3 h-100 m-0 p-0">
-                    <div class="card mx-auto" style="width: 18rem;" >
-                        <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="p-5 mb-4 bg-light rounded-3 pe-0">
+                        <div class="container-fluid py-5 m-0 p-0">
+                          <h1 class="display-5 fw-bold">Automation and Process Improvement</h1>
+                          <p class="col-md-8 fs-4">In order to improve processes thru the use of the Automation a standard steps have been defined, this optimize the use of resources for the project .</p>
+                          <button class="btn btn-primary btn-lg" type="button">Example button</button>
                         </div>
-                    </div>
+                      </div>
                 </div>
             </div>
 
