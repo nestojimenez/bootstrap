@@ -8,7 +8,7 @@
             
             [class*="collapse"]{
                 padding: 1rem;
-                background-color: rgb(66, 167, 245);
+                
                 border: 2px solid white;
                 color: white;
             }
@@ -16,11 +16,11 @@
         </style>
         
     </head>
-    <body>
+    <body style="overflow: hidden; /* Hide scrollbars */">
         <!-- Navigation Bar
         ---------------------------
     -------------------------------->
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-transparent m-0 p-0">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                 <img src="images/Flex Logo, Blue.png" alt="Logo" width="150" height="72" class="d-inline-block align-text-top">
@@ -44,7 +44,7 @@
                                 <li><a class="dropdown-item" href="#">Expenses</a></li>
                                 <li><a class="dropdown-item" href="#">Project Charters</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Team Members</a></li>
+                                <li><a class="dropdown-item" href="team_members.html">Team Members</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -62,9 +62,9 @@
         <!--Picture and Text-------------------
             
         --------------------------------------->
-        <img class = "img-fluid h-100 w-100 m-0 p-0 img-thumbnail" src="images/Grafica de Ciclo  Rev 1.png" style="object-fit: cover">
+        <img class = "img-fluid h-100 w-100 m-0 p-0 " src="images/Grafica de Ciclo Rev 8.png" >
 
-        <div class="container-fluid m-0 mt-2 p-0" style="position: relative;
+        <div class="container-fluid m-0 mt-0 p-0" style="position: relative;
         z-index: 999;
         margin: 0 auto;
         left: 0%;
@@ -75,22 +75,22 @@
 
             <div class="row h-100 m-0 p-0 justify-content-start">
 
-                <div class="col-md-2 col-xs-2 h-100 m-0 p-0">
+                <div class="col-md-2 col-xs-2 h-100 m-0 p-0 " style="background: linear-gradient(135deg, rgba(0,84,134,1) 45%, rgba(0,154,221,1) 100%);">
                     <!-- Sidebar -->
-                    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+                    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-transparent border-0">
                         <div class="position-sticky">
                             <div class="list-group list-group-flush mx-3 mt-4">
-                            <a href="#" class="list-group-item list-group-item-action py-2 ripple fw-bold" aria-current="true">
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple fw-bold bg-transparent text-white" aria-current="true">
                                 <i class="fas bi bi-robot fa-fw me-3"></i><span>Project Options</span>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-transparent text-white">
                                 <i class="fas bi bi-cloud-arrow-up fa-fw me-3"></i><span>Load Project</span>
                             </a>
-                            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-transparent text-white"><i
                                 class="fas bi bi-eye fa-fw me-3"></i><span>View Project</span></a>
-                            <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-transparent text-white"><i
                                 class="fas bi bi-rocket-takeoff fa-fw me-3"></i><span>Project Tools</span></a>
-                            <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+                            <a href="#" class="list-group-item list-group-item-action py-2 ripple bg-transparent text-white">
                                 <i class="fas bi bi-card-checklist fa-fw me-3"></i><span>Project List</span>
                             </a>
                             
@@ -100,18 +100,25 @@
                         <!-- Sidebar -->
                 </div>
 
-                <div class="col-md-7 col-xs-7 h-75 m-0 p-0">
+                <div class="col-md-7 col-xs-7 h-100 m-0 p-0">
                     <!--<img class = "img-fluid h-100 w-100 m-0 p-0 img-thumbnail" src="images/Grafica de Ciclo  Rev 1.png" style="object-fit: cover">-->
                 </div>
 
-                <div class="col-md-3 col-xs-3 h-100 m-0 p-0">
-                    <div class="p-5 mb-4 bg-light rounded-3 pe-0">
-                        <div class="container-fluid py-5 m-0 p-0">
-                          <h1 class="display-5 fw-bold">Automation and Process Improvement</h1>
-                          <p class="col-md-8 fs-4">In order to improve processes thru the use of the Automation a standard steps have been defined, this optimize the use of resources for the project .</p>
-                          <button class="btn btn-primary btn-lg" type="button">Example button</button>
+                <div class="col-md-3 col-xs-3 h-100 m-0 p-0" style="background: linear-gradient(135deg, rgba(0,100,50,1) 65%, rgba(130,188,0,1) 100%);">
+                    <div class="p-5 mb-4  rounded-0 pe-0" style="background: linear-gradient(135deg, rgba(127,30,94,1) 45%, rgba(186,37,125,1) 100%);">
+                        <div class="container-fluid py-0 m-0 p-0">
+                          <h1 class="h3 fw-bold text-white">Automation and Process Improvement</h1>
+                          <p class="col-md-8 fs-4 text-white">In order to improve processes thru the use of the Automation a standard steps have been defined, this optimize the use of resources for the project .</p>
+                          <!--<button class="btn btn-primary btn-lg" type="button">Example button</button>-->
                         </div>
-                      </div>
+                    </div>
+                    <div class="p-5 mb-4  rounded-0 pe-0 bg-transparent">
+                        <div class="container-fluid py-0 m-0 p-0">
+                          <h1 class="h3 fw-bold text-white">Step 1: Understand</h1>
+                          <p class="col-md-8 fs-4 text-white">Automation team should understand the need by reviewing CTQs, Anual Volume, Product Design, Estimated Layout.</p>
+                          
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -128,7 +135,7 @@
         <!--<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>-->
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-        
+        <script src="./project_main.js"></script>
   
 
     </body>

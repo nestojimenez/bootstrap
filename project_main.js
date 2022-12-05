@@ -1,0 +1,1 @@
+onmousemove = function(e){console.log(`mouse location = X: ${e.x}, Y: ${e.y}`)}
