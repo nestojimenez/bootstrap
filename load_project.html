@@ -122,52 +122,86 @@
               <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                   <div>
-                    <h6 class="my-0">Project name</h6>
-                    <small class="text-muted">Brief description</small>
+                    <h6 class="my-0">Project Total Cost</h6>
+                    <small id="project_name_result" class="text-muted">My Project</small>
                   </div>
-                  <span class="text-muted">$12</span>
+                  <span id="project_total_cost" class="text-muted">$0.00</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                   <div>
                     <h6 class="my-0">Total On Going Cost</h6>
-                    <small class="text-muted">Brief description</small>
+                    <small class="text-muted">Recurring Cost during the year</small>
                   </div>
-                  <span class="text-muted">$8</span>
+                  <span id="total_ongoing_cost" class="text-muted">$0.00</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                   <div>
                     <h6 class="my-0">Projected Savings</h6>
-                    <small class="text-muted">Brief description</small>
+                    <small class="text-muted">Total Projected Savings per Year</small>
                   </div>
-                  <span class="text-muted">$5</span>
+                  <span id="total_savings" class="text-muted">$0.00</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between bg-light">
                   <div class="text-success">
                     <h6 class="my-0">Yearly Balance</h6>
-                    <small>EXAMPLECODE</small>
+                    <small>Savings - On Going Cost</small>
                   </div>
-                  <span class="text-success">−$5</span>
+                  <span id="yearly_balance" class="text-success">$0.00</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                   <span>Payback (Months)</span>
-                  <strong>$20</strong>
+                  <strong id="pay_back" >0 Months</strong>
                 </li>
               </ul>
+
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Project Total Cost</h6>
+                    <small id="project_name_result" class="text-muted">My Project</small>
+                  </div>
+                  <span id="project_total_cost" class="text-muted">$0.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Total On Going Cost</h6>
+                    <small class="text-muted">Recurring Cost during the year</small>
+                  </div>
+                  <span id="total_ongoing_cost" class="text-muted">$0.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Projected Savings</h6>
+                    <small class="text-muted">Total Projected Savings per Year</small>
+                  </div>
+                  <span id="total_savings" class="text-muted">$0.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between bg-light">
+                  <div class="text-success">
+                    <h6 class="my-0">Yearly Balance</h6>
+                    <small>Savings - On Going Cost</small>
+                  </div>
+                  <span id="yearly_balance" class="text-success">$0.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Payback (Months)</span>
+                  <strong id="pay_back" >0 Months</strong>
+                </li>
+              </ul>
+
+              
       
-              <form class="card p-2">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Promo code">
-                  <button type="submit" class="btn btn-secondary">Redeem</button>
-                </div>
-              </form>
+              
             </div>
+
+            <!---Project Data--------------------------------------------------------------------->
             <div class="col-md-7 col-lg-8">
               <h4 class="mb-3">Project Data</h4>
               <form class="needs-validation" novalidate>
                 <div class="row g-3">
                   <div class="col-sm-6">
                     <label for="firstName" class="form-label">Project name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Project Name" value="" required>
+                    <input type="text" class="form-control" id="project_name" placeholder="Project Name" value="" required>
                     <div class="invalid-feedback">
                       Valid first name is required.
                     </div>
@@ -175,7 +209,7 @@
       
                   <div class="col-sm-6">
                     <label for="lastName" class="form-label">Customer name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Customer Name" value="" required>
+                    <input type="text" class="form-control" id="customer_name" placeholder="Customer Name" value="" required>
                     <div class="invalid-feedback">
                       Valid last name is required.
                     </div>
@@ -202,7 +236,7 @@
       
                   <div class="col-6">
                     <label for="address" class="form-label">Initial Investment</label>
-                    <input type="text" class="form-control" id="address" placeholder="Amount" required>
+                    <input type="number" class="form-control" id="initial_investment" placeholder="Amount" value="0.00" required>
                     <div class="invalid-feedback">
                       Please enter your shipping address.
                     </div>
@@ -210,14 +244,14 @@
       
                   <div class="col-6">
                     <label for="address2" class="form-label">NRE Hours <span class="text-muted">(Pay by Customer)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Amount">
+                    <input type="numbers" class="form-control" id="nre_hours" placeholder="Amount" value="0.00">
                   </div>
                   
                 <!--ON GOING COST------------------------------------------------------------------------------>
                 <h4 class="mb-3">On Going Cost</h4>
                   <div class="col-3">
                     <label for="address" class="form-label">Head Count</label>
-                    <input type="text" class="form-control" id="address" placeholder="Amount" required>
+                    <input type="number" class="form-control" id="head_count_ongoing" placeholder="Amount" value="0.00" required>
                     <div class="invalid-feedback">
                       Please enter your shipping address.
                     </div>
@@ -225,31 +259,31 @@
       
                   <div class="col-3">
                     <label for="address2" class="form-label">Scrap </label>
-                    <input type="text" class="form-control" id="address2" placeholder="Amount">
+                    <input type="number" class="form-control" id="scrap_ongoing" placeholder="Amount" value="0.00">
                   </div>
 
                   <div class="col-3">
                     <label for="address2" class="form-label">Spare Parts</label>
-                    <input type="text" class="form-control" id="address2" placeholder="Amount">
+                    <input type="number" class="form-control" id="spare_parts_ongoing" placeholder="Amount" value="0.00">
                   </div>
                   <div class="col-3">
                     <label for="address2" class="form-label">Overhead</label>
-                    <input type="text" class="form-control" id="address2" placeholder="Amount">
+                    <input type="number" class="form-control" id="overhead_ongoing" placeholder="Amount" value="0.00">
                   </div>
 
                   <!--SAVINGS--------------------------------------------------------------------->
                   <h4 class="mb-3">Savings</h4>
                   <div class="col-4">
                     <label for="address2" class="form-label">Head Count </label>
-                    <input type="text" class="form-control" id="address2" placeholder="Amount">
+                    <input type="number" class="form-control" id="head_count_savings" placeholder="Amount" value="0.00">
                   </div>
                   <div class="col-4">
                     <label for="address2" class="form-label">Scrap</label>
-                    <input type="text" class="form-control" id="address2" placeholder="Amount">
+                    <input type="number" class="form-control" id="scrap_savings" placeholder="Amount" value="0.00">
                   </div>
                   <div class="col-4">
                     <label for="address2" class="form-label">Cost Avoidance</label>
-                    <input type="text" class="form-control" id="address2" placeholder="Amount">
+                    <input type="number" class="form-control" id="cost_avoidance_savings" placeholder="Amount" value="0.00">
                   </div>
       
                    <!--Automation Driver--------------------------------------------------------------------->
