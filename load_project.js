@@ -1,5 +1,5 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-/*(() => {
+const validate = () => {
     'use strict'
   
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -16,7 +16,14 @@
         form.classList.add('was-validated')
       }, false)
     })
-  })()*/
+  }
+
+
+  
+
+
+
+  
 
   //Calculate project Name
   let projectNameResult = document.getElementById('project_name_result');
@@ -43,6 +50,8 @@
   let yearlyBalance = document.getElementById('yearly_balance')
   ////Calculate PayBack
   let payBack = document.getElementById('pay_back');
+  ////Load to DataBase///////////////////////////////////////////////////////////
+  let btnLoad = document.getElementById('btn_load');
 
 
   //Calculate project Name
@@ -111,4 +120,48 @@
   const payBackCalc = ()=>{
     payBack.innerHTML = (cost * 12)/(savings - onGoinCost);
   }
+
+  btnLoad.addEventListener('click', async (e) =>{
+    validate();
+    //alert('You just click');
+    let project = { pr_name: 'Matusalem',
+    cu_name: 'JJ',
+    pr_owner:'Luis Medrano',
+    email:'luis.cesar@flex.com',
+    init_invest: '350000',
+    nre_hours:'150000',
+    ongo_headcount:'500',
+    ongo_scrap:'500',
+    ongo_spareparts:'500',
+    ongo_overhead:'500',
+    savings_headcount:'400000',
+    savings_scrap:'400000',
+    savings_costavoidance:'400000',
+    dri_safety:'Some Impact',
+    dri_quality:'Some Impact',
+    dri_capacity:'Some Impact',
+    dri_customerreq:'Some Impact' ,
+    pr_status:'Concept',
+    created_at: new Date(),
+    updated_at: new Date()};
+
+    
+    //const result = await fetch("http://localhost:8080/todos", {method:"GET"});
+    //const todos = await result.json();
+    const result = await fetch("http://localhost:8080/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project) });
+    
+
+    /*try{
+      const jsonRequest = {};
+      jsonRequest.todo = 'name';
+      const result = await fetch("http://localhost:8080/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(jsonRequest) });
+      //const result = await fetch("http://localhost:8080/todos", {method:"GET"});
+      alert('Record Created');
+    }
+    catch(e){
+      console.log(e);
+    }*/
+    
+            
+  }) 
   
