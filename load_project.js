@@ -1,31 +1,6 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-const validate = () => {
-    'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-  
-        form.classList.add('was-validated')
-      }, false)
-    })
-  }
 
-
-  
-
-
-
-  
-
-  //Calculate project Name
+//Calculate project Name
   let projectNameResult = document.getElementById('project_name_result');
   let projectName = document.getElementById('project_name');
   //Calculate project on going cost
@@ -53,6 +28,33 @@ const validate = () => {
   ////Load to DataBase///////////////////////////////////////////////////////////
   let btnLoad = document.getElementById('btn_load');
 
+  const validate = () => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+    console.log(forms);
+    console.log(Array.from(forms));
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form, index )=> {
+      console.log(form);
+      form.addEventListener('submit', async event => {
+        if (!form.checkValidity()) {
+          
+          event.preventDefault()
+          event.stopPropagation()
+        }else{
+          createProject();
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+      console.log(index);
+      console.log(form.checkValidity());
+    })
+  }
+
+  validate();
 
   //Calculate project Name
   projectName.onchange = () =>{
@@ -121,47 +123,27 @@ const validate = () => {
     payBack.innerHTML = (cost * 12)/(savings - onGoinCost);
   }
 
-  btnLoad.addEventListener('click', async (e) =>{
-    validate();
-    //alert('You just click');
-    let project = { pr_name: 'Matusalem',
-    cu_name: 'JJ',
-    pr_owner:'Luis Medrano',
-    email:'luis.cesar@flex.com',
-    init_invest: '350000',
-    nre_hours:'150000',
-    ongo_headcount:'500',
-    ongo_scrap:'500',
-    ongo_spareparts:'500',
-    ongo_overhead:'500',
-    savings_headcount:'400000',
-    savings_scrap:'400000',
-    savings_costavoidance:'400000',
-    dri_safety:'Some Impact',
-    dri_quality:'Some Impact',
-    dri_capacity:'Some Impact',
-    dri_customerreq:'Some Impact' ,
-    pr_status:'Concept',
-    created_at: new Date(),
-    updated_at: new Date()};
+  const createProject= async()  =>{
+    let project = { pr_name: projectName.value,
+          cu_name: document.getElementById('customer_name').value,
+          pr_owner:document.getElementById('pr_owner').value,
+          email:document.getElementById('email').value,
+          init_invest: intialInvestment.value,
+          nre_hours: nreHours.value,
+          ongo_headcount:headCountOnGoing.value,
+          ongo_scrap:scrapOnGoing.value,
+          ongo_spareparts:sparePartsOnGoing.value,
+          ongo_overhead:overHeadOnGoing.value,
+          savings_headcount:headCountSavings.value,
+          savings_scrap:scrapSavings.value,
+          savings_costavoidance: costAvoidanceSavings.value,
+          dri_safety:document.getElementById('dri_safety').value,
+          dri_quality:document.getElementById('dri_quality').value,
+          dri_capacity: document.getElementById('dri_capacity').value,
+          dri_customerreq:document.getElementById('dri_customerreq').value,
+          pr_status:'Concept',
+          created_at: new Date(),
+          updated_at: new Date()};
 
-    
-    //const result = await fetch("http://localhost:8080/todos", {method:"GET"});
-    //const todos = await result.json();
-    const result = await fetch("http://localhost:8080/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project) });
-    
-
-    /*try{
-      const jsonRequest = {};
-      jsonRequest.todo = 'name';
-      const result = await fetch("http://localhost:8080/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(jsonRequest) });
-      //const result = await fetch("http://localhost:8080/todos", {method:"GET"});
-      alert('Record Created');
-    }
-    catch(e){
-      console.log(e);
-    }*/
-    
-            
-  }) 
-  
+          const result = await fetch("http://localhost:8080/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project) });
+  }
