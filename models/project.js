@@ -55,4 +55,27 @@ Project.readAllProjects = async () =>{
     }
 }
 
+Project.getUniqueOwner = async () => {
+    try{
+        const result = await client.query("SELECT DISTINCT pr_owner FROM projects;")
+        return result.rows;
+    }
+    catch(e){
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
+Project.filterProjectOwner = async (pr_owner) =>{
+    try{
+        const sql = `SELECT * FROM projects WHERE pr_owner = $1`;
+        const result = await client.query(sql, [pr_owner])
+        return result.rows;
+    }
+    catch(e){
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
 module.exports = Project;
