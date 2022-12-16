@@ -19,6 +19,10 @@ CREATE TABLE projects(
     dri_capacity VARCHAR(80) NOT NULL,
     dri_customerreq VARCHAR(80) NOT NULL,
     pr_status VARCHAR(80) NOT NULL,
+    capex_po BOOLEAN,
+    aware BOOLEAN,
+    pr_start_date TIMESTAMP(0) NOT NULL,
+    pr_finish_date TIMESTAMP(0) NOT NULL,
     created_at TIMESTAMP(0) NOT NULL,
     updated_at TIMESTAMP(0) NOT NULL
 );
@@ -42,6 +46,10 @@ INSERT INTO projects(
     dri_capacity,
     dri_customerreq ,
     pr_status,
+    capex_po,
+    aware,
+    pr_start_date,
+    pr_finish_date,
     created_at,
     updated_at
 )
@@ -64,6 +72,10 @@ VALUES(
     'No Impact',
     'No Impact',
     'Concept',
+    'true',
+    'true',
+    '2022-07-14',
+    '2022-07-14',
     '2022-07-14',
     '2022-07-14'
 )

@@ -118,7 +118,7 @@
             <div class="col-md-5 col-lg-4 order-md-last">
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-primary">Project Resume</span>
-                <span class="badge bg-primary rounded-pill">3</span>
+                <!--<span class="badge bg-primary rounded-pill">3</span>-->
               </h4>
               <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -155,44 +155,6 @@
                 </li>
               </ul>
 
-              <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-sm">
-                  <div>
-                    <h6 class="my-0">Project Total Cost</h6>
-                    <small id="project_name_result" class="text-muted">My Project</small>
-                  </div>
-                  <span id="project_total_cost" class="text-muted">$0.00</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-sm">
-                  <div>
-                    <h6 class="my-0">Total On Going Cost</h6>
-                    <small class="text-muted">Recurring Cost during the year</small>
-                  </div>
-                  <span id="total_ongoing_cost" class="text-muted">$0.00</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-sm">
-                  <div>
-                    <h6 class="my-0">Projected Savings</h6>
-                    <small class="text-muted">Total Projected Savings per Year</small>
-                  </div>
-                  <span id="total_savings" class="text-muted">$0.00</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between bg-light">
-                  <div class="text-success">
-                    <h6 class="my-0">Yearly Balance</h6>
-                    <small>Savings - On Going Cost</small>
-                  </div>
-                  <span id="yearly_balance" class="text-success">$0.00</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  <span>Payback (Months)</span>
-                  <strong id="pay_back" >0 Months</strong>
-                </li>
-              </ul>
-
-              
-      
-              
             </div>
 
             <!---Project Data--------------------------------------------------------------------->
@@ -292,7 +254,8 @@
                   <div class="col-md-3">
                     <label for="country" class="form-label">Safety/Ergonomics</label>
                     <select class="form-select" id="dri_safety" required>
-                      <option value="">No Impact</option>
+                      <option value="">Select Option</option>
+                      <option>No Impact</option>
                       <option>Some Impact</option>
                       <option>High Impact</option>
                     </select>
@@ -304,7 +267,8 @@
                   <div class="col-md-3">
                     <label for="state" class="form-label">Quality</label>
                     <select class="form-select" id="dri_quality" required>
-                        <option value="">No Impact</option>
+                        <option value="">Select Option</option>
+                        <option>No Impact</option>
                         <option>Some Impact</option>
                         <option>High Impact</option>
                     </select>
@@ -315,7 +279,8 @@
                   <div class="col-md-3">
                     <label for="state" class="form-label">Increase Capacity</label>
                     <select class="form-select" id="dri_capacity" required>
-                        <option value="">No Impact</option>
+                        <option value="">Select Option</option>
+                        <option>No Impact</option>
                         <option>Some Impact</option>
                         <option>High Impact</option>
                     </select>
@@ -326,7 +291,8 @@
                   <div class="col-md-3">
                     <label for="state" class="form-label">Customer Req</label>
                     <select class="form-select" id="dri_customerreq" required>
-                        <option value="">No Impact</option>
+                        <option value="">Select Option</option>
+                        <option>No Impact</option>
                         <option>Some Impact</option>
                         <option>High Impact</option>
                     </select>
@@ -341,30 +307,30 @@
                 <hr class="my-4">
       
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="same-address">
+                  <input type="checkbox" class="form-check-input" id="capex_po">
                   <label class="form-check-label" for="same-address">Project has CAPEX or PO from Customer</label>
                 </div>
       
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="save-info">
+                  <input type="checkbox" class="form-check-input" id="aware">
                   <label class="form-check-label" for="save-info">Is Automation Manager/Director aware of the project</label>
                 </div>
       
                 <hr class="my-4">
-                <!--Project Initial Status-->
+                <!---------------Project Initial Status--------------------------------------------------------->
                 <h4 class="mb-3">Project Initial Status</h4>
       
                 <div class="my-3">
                   <div class="form-check">
-                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                    <input id="concept" name="paymentMethod" type="radio" class="form-check-input" checked required>
                     <label class="form-check-label" for="credit">Concept Development</label>
                   </div>
                   <div class="form-check">
-                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                    <input id="in_progress" name="paymentMethod" type="radio" class="form-check-input" required>
                     <label class="form-check-label" for="debit">Project in Progress</label>
                   </div>
                   <div class="form-check">
-                    <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                    <input id="on_hold" name="paymentMethod" type="radio" class="form-check-input" required>
                     <label class="form-check-label" for="paypal">Project On Hold</label>
                   </div>
                 </div>
@@ -373,7 +339,7 @@
                 <div class="row gy-3">
                   <div class="col-md-6">
                     <label for="cc-name" class="form-label">Project Start Date</label>
-                    <input type="date" class="form-control" id="cc-name" placeholder="" required>
+                    <input type="date" class="form-control" id="pr_start_date" placeholder="" required>
                     <small class="text-muted">Provide estimated dates</small>
                     <div class="invalid-feedback">
                       Name on card is required
@@ -382,7 +348,7 @@
       
                   <div class="col-md-6">
                     <label for="cc-number" class="form-label">Project End Date</label>
-                    <input type="date" class="form-control" id="cc-number" placeholder="" required>
+                    <input type="date" class="form-control" id="pr_finish_date" placeholder="" required>
                     <div class="invalid-feedback">
                       Credit card number is required
                     </div>

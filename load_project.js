@@ -55,7 +55,8 @@
   }
 
   validate();
-
+  //const radio = radioCheck();
+  //radio = radio + 'A';
   //Calculate project Name
   projectName.onchange = () =>{
     projectNameResult.innerHTML = projectName.value;
@@ -124,6 +125,8 @@
   }
 
   const createProject= async()  =>{
+
+    const radioChecked = radioCheck();
     let project = { pr_name: projectName.value,
           cu_name: document.getElementById('customer_name').value,
           pr_owner:document.getElementById('pr_owner').value,
@@ -141,9 +144,22 @@
           dri_quality:document.getElementById('dri_quality').value,
           dri_capacity: document.getElementById('dri_capacity').value,
           dri_customerreq:document.getElementById('dri_customerreq').value,
-          pr_status:'Concept',
+          pr_status:radioChecked,
+          capex_po: document.getElementById('capex_po').checked,
+          aware: document.getElementById('aware').checked,
+          pr_start_date: document.getElementById('pr_start_date').value,
+          pr_finish_date: document.getElementById('pr_finish_date').value,
           created_at: new Date(),
           updated_at: new Date()};
 
           const result = await fetch("http://localhost:8080/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project) });
+  }
+
+  function radioCheck(){
+    const radioButtons = document.querySelectorAll('input[name = "paymentMethod"]');
+    for(const radioButton of radioButtons){
+      if(radioButton.checked){
+        return radioButton.id.toString();
+      }
+    }
   }
