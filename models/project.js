@@ -78,4 +78,50 @@ Project.filterProjectOwner = async (pr_owner) =>{
     }
 }
 
+Project.getUniqueStatus = async () => {
+    try{
+        const result = await client.query("SELECT DISTINCT pr_status FROM projects;")
+        return result.rows;
+    }
+    catch(e){
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
+Project.filterProjectStatus = async (pr_status) => {
+    try{
+        const sql = `SELECT * FROM projects WHERE pr_status = $1`;
+        const result = await client.query(sql, [pr_status])
+        return result.rows;
+    }
+    catch(e){
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
+Project.getUniqueCustomer = async () => {
+    try{
+        const result = await client.query("SELECT DISTINCT cu_name FROM projects;")
+        return result.rows;
+    }
+    catch(e){
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
+Project.filterProjectCustomer = async (cu_name) => {
+    try{
+        const sql = `SELECT * FROM projects WHERE cu_name = $1`;
+        const result = await client.query(sql, [cu_name])
+        return result.rows;
+    }
+    catch(e){
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
 module.exports = Project;

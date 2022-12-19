@@ -121,7 +121,7 @@
 
   //Calculate payback
   const payBackCalc = ()=>{
-    payBack.innerHTML = (cost * 12)/(savings - onGoinCost);
+    payBack.innerHTML = ((cost * 12)/(savings - onGoinCost)).toFixed(2);
   }
 
   const createProject= async()  =>{
