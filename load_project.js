@@ -152,7 +152,7 @@
           created_at: new Date(),
           updated_at: new Date()};
 
-          const result = await fetch("http://10.105.168.159:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project) });
+          const result = await fetch("http://10.105.169.17:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project) });
   }
 
   function radioCheck(){

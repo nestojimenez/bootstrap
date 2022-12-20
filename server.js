@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname)));
     console.log("My web server is listening..on port 8080");
 })*/
 
-app.listen(3000, '10.105.168.159' || 'localhost', function(){
+app.listen(3000, '10.105.169.17' || 'localhost', function(){
     console.log('Aplicacion de NodeJS', + process.pid + 'Iniciada...')
 });
 
