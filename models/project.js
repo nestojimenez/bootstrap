@@ -6,8 +6,8 @@ Project.createProject = async (project) =>{
     try{
         const sql = `INSERT INTO projects(pr_name,cu_name,pr_owner,email,init_invest,nre_hours,ongo_headcount,ongo_scrap,ongo_spareparts,ongo_overhead,
             savings_headcount,savings_scrap,savings_costavoidance,dri_safety,dri_quality,dri_capacity,dri_customerreq ,pr_status,capex_po,aware,pr_start_date, pr_finish_date, created_at,updated_at) 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22,$23, $24)`
-        await client.query(sql, 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22,$23, $24) RETURNING id`
+        const results = await client.query(sql, 
         [
             project.pr_name,
             project.cu_name,
@@ -34,7 +34,8 @@ Project.createProject = async (project) =>{
             new Date(),
             new Date()
         ]);
-        return true;
+        console.log(results.rows);
+        return results.rows;
     }
     catch(e){
         

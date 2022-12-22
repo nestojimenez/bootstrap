@@ -5,7 +5,9 @@ module.exports = {
         let result = {}
         try{
             const reqJson = req.body;
-            await project.createProject(reqJson);
+            const rows = await project.createProject(reqJson);
+            res.setHeader("content-type", "application/json");
+            res.send(JSON.stringify(rows));
             result.success = true;
         
         }catch(e){

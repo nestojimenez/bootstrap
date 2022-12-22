@@ -1,4 +1,5 @@
 let todos = [];
+let clickedId = '';
 const filterOwner = document.getElementById('filter_owner');
 const filterStatus = document.getElementById('filter_status');
 const filterCustomer = document.getElementById('filter_customer');
@@ -15,7 +16,7 @@ const getAllProyects= async ()=>{
     todos = await result.json();    //All Project Data on JSON format
     
     //fillHeaders(todos);  //Fill table headers with databse fields
-    
+    //console.log('Estos son todos' + todos);
     fillTable(todos);  //Fill table table
 
 }
@@ -25,6 +26,8 @@ const fillTable = (values) =>{
     tableBody.innerHTML = "";
     values.forEach(element =>{
         const tr = document.createElement('tr');
+        tr.setAttribute('id', `${element.id}`);
+        tr.setAttribute('onclick', 'projectDetails(this.id)');
 
         const arrayValues = Object.values(element);
         arrayValues.forEach(value =>{
@@ -38,6 +41,15 @@ const fillTable = (values) =>{
     })
     loadTotalResume(values);
     createRoadMap(values);
+}
+
+function projectDetails(clicked_id){
+    alert('Mi proyecto' + clicked_id);
+    clickedId = clicked_id;
+    sessionStorage.setItem("clicked_id", clickedId);
+    //window.location.href = './project_details.html'
+    window.open('./project_details.html', "_blank")
+    
 }
 
 const fillHeaders = (todos) =>{
@@ -77,11 +89,11 @@ filterOwner.oninput = async ()=> {
         const project = filterOwner.value;
         const result = await fetch("http://10.105.169.17:3000/project_filter/" + project, {method:"GET"});
         const rows = await result.json();
-        console.log(rows);
+        //console.log(rows);
         fillTable(rows);
     }
 
-    console.log(filterOwner.value);
+    //console.log(filterOwner.value);
     
 }
 
@@ -108,11 +120,11 @@ filterStatus.oninput = async ()=> {
         const status = filterStatus.value;
         const result = await fetch("http://10.105.169.17:3000/status_filter/" + status, {method:"GET"});
         const rows = await result.json();
-        console.log(rows);
+        //console.log(rows);
         fillTable(rows);
     }
 
-    console.log(filterStatus.value);
+    //console.log(filterStatus.value);
     
 }
 
@@ -139,11 +151,11 @@ filterCustomer.oninput = async ()=> {
         const customer = filterCustomer.value;
         const result = await fetch("http://10.105.169.17:3000/customer_filter/" + customer, {method:"GET"});
         const rows = await result.json();
-        console.log(rows);
+        //console.log(rows);
         fillTable(rows);
     }
 
-    console.log(filterStatus.value);
+    //console.log(filterStatus.value);
     
 }
 
@@ -216,13 +228,14 @@ const getRangeAllDates = (allData) =>{
     })
     //let datesOrderArray = datesArray.sort((a, b) =>{ b - a})
     let datesOrderArray = datesArray.sort((a, b) => new Date(b).getTime() - new Date(a).getTime())//datesArray.sort((a, b) =>{ b - a})
-    console.log(datesOrderArray)
+    //console.log(datesOrderArray)
     const len = datesOrderArray.length;
 
     const allProjectsMonths =  calculateTotalMonthsDifference(datesOrderArray[0], datesOrderArray[len -1]);
     document.getElementById('date_start').innerHTML = datesOrderArray[len-1].slice(0,10);
     document.getElementById('date_finish').innerHTML = datesOrderArray[0].slice(0,10);
-    console.log('Duracion de todos los proyectos: ' + allProjectsMonths);
+    document.getElementById('date_middle').innerHTML = datesOrderArray[len/2].slice(0,10);
+    //console.log('Duracion de todos los proyectos: ' + allProjectsMonths);
 
     return allProjectsMonths;
 }
@@ -328,3 +341,4 @@ getAllProyects();
 getUniqueProejctOwners();  //Load unique owners on select control 'filter_owners'
 getUniqueProejctStatus();  //Load unique status on select control 'filter_status'
 getUniqueProejctCustomer();//Load unique customer on select control 'filter_customer'
+

@@ -78,4 +78,65 @@ VALUES(
     '2022-07-14',
     '2022-07-14',
     '2022-07-14'
+) RETURNING id;
+
+DROP TABLE IF EXISTS projectPhaseDates CASCADE;
+CREATE TABLE projectPhaseDates(
+    id BIGSERIAL PRIMARY KEY,
+    pr_id VARCHAR(255) NOT NULL,
+    understand_start_date TIMESTAMP(0) NOT NULL,
+    understand_finish_date TIMESTAMP(0) NOT NULL,
+    assestment_start_date TIMESTAMP(0) NOT NULL,
+    assestment_finish_date TIMESTAMP(0) NOT NULL,
+    plan_start_date TIMESTAMP(0) NOT NULL,
+    plan_finish_date TIMESTAMP(0) NOT NULL,
+    design_start_date TIMESTAMP(0) NOT NULL,
+    design_finish_date TIMESTAMP(0) NOT NULL,
+    execute_start_date TIMESTAMP(0) NOT NULL,
+    execute_finish_date TIMESTAMP(0) NOT NULL,
+    transition_start_date TIMESTAMP(0) NOT NULL,
+    transition_finish_date TIMESTAMP(0) NOT NULL,
+    support_start_date TIMESTAMP(0) NOT NULL,
+    support_finish_date TIMESTAMP(0) NOT NULL,
+    created_at TIMESTAMP(0) NOT NULL,
+    updated_at TIMESTAMP(0) NOT NULL
+);
+
+INSERT INTO projectPhaseDates(
+    pr_id,
+    understand_start_date,
+    understand_finish_date,
+    assestment_start_date,
+    assestment_finish_date,
+    plan_start_date,
+    plan_finish_date,
+    design_start_date,
+    design_finish_date,
+    execute_start_date,
+    execute_finish_date,
+    transition_start_date,
+    transition_finish_date,
+    support_start_date,
+    support_finish_date,
+    created_at,
+    updated_at
+)
+VALUES(
+    '1',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14',
+    '2022-07-14'
 )

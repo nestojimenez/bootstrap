@@ -1,6 +1,7 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 
-//Calculate project Name
+
+  //Calculate project Name
   let projectNameResult = document.getElementById('project_name_result');
   let projectName = document.getElementById('project_name');
   //Calculate project on going cost
@@ -27,32 +28,217 @@
   let payBack = document.getElementById('pay_back');
   ////Load to DataBase///////////////////////////////////////////////////////////
   let btnLoad = document.getElementById('btn_load');
+  //////In Progress Project////////////////////////////////////////////////////////
+  let divPhaseDates = document.getElementById('phase_dates');
+  let radInProgress = document.getElementById('in_progress');
+  let radInConcept = document.getElementById('concept');
+  let radOnHold = document.getElementById('on_hold')
+  let lastProjectLoadedId = '';
+  
+  const loadPhasesString = `<div class="row gy-3">
+
+  <div class="col-md-4 align-self-center">
+    <p class="h5">Phase 1 - Understand</p>
+  </div>
+
+  <div class="col-md-4">
+      <label for="cc-name" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="understand_start_date" placeholder="" required>
+      <small class="text-muted">Provide estimated dates</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cc-number" class="form-label">Finish Date</label>
+    <input type="date" class="form-control" id="understand_finish_date" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>   
+</div>
+
+<div class="row gy-3">
+
+  <div class="col-md-4 align-self-center">
+    <div class="h5">Phase 2 - Assestment</div>
+  </div>
+
+  <div class="col-md-4">
+      <label for="cc-name" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="assestment_start_date" placeholder="" required>
+      <small class="text-muted">Provide estimated dates</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cc-number" class="form-label">Finish Date</label>
+    <input type="date" class="form-control" id="assestment_finish_date" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>   
+</div>
+
+<div class="row gy-3">
+
+  <div class="col-md-4 align-self-center">
+    <div class="h5">Phase 3 - Plan</div>
+  </div>
+
+  <div class="col-md-4">
+      <label for="cc-name" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="plan_start_date" placeholder="" required>
+      <small class="text-muted">Provide estimated dates</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cc-number" class="form-label">Finish Date</label>
+    <input type="date" class="form-control" id="plan_finish_date" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>   
+</div>
+
+<div class="row gy-3">
+
+  <div class="col-md-4 align-self-center">
+    <div class="h5">Phase 4 - Design</div>
+  </div>
+
+  <div class="col-md-4">
+      <label for="cc-name" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="design_start_date" placeholder="" required>
+      <small class="text-muted">Provide estimated dates</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cc-number" class="form-label">Finish Date</label>
+    <input type="date" class="form-control" id="design_finish_date" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>   
+</div>
+
+<div class="row gy-3">
+
+  <div class="col-md-4 align-self-center">
+    <div class="h5">Phase 5 - Execute</div>
+  </div>
+
+  <div class="col-md-4">
+      <label for="cc-name" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="execute_start_date" placeholder="" required>
+      <small class="text-muted">Provide estimated dates</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cc-number" class="form-label">Finish Date</label>
+    <input type="date" class="form-control" id="execute_finish_date" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>   
+</div>
+
+<div class="row gy-3">
+
+  <div class="col-md-4 align-self-center">
+    <div class="h5">Phase 6 - Transition</div>
+  </div>
+
+  <div class="col-md-4">
+      <label for="cc-name" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="transition_start_date" placeholder="" required>
+      <small class="text-muted">Provide estimated dates</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cc-number" class="form-label">Finish Date</label>
+    <input type="date" class="form-control" id="transition_finish_date" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>   
+</div>
+
+<div class="row gy-3">
+
+  <div class="col-md-4 align-self-center">
+    <div class="h5">Phase 7 - Support</div>
+  </div>
+
+  <div class="col-md-4">
+      <label for="cc-name" class="form-label">Start Date</label>
+      <input type="date" class="form-control" id="support_start_date" placeholder="" required>
+      <small class="text-muted">Provide estimated dates</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="cc-number" class="form-label">Finish Date</label>
+    <input type="date" class="form-control" id="support_finish_date" placeholder="" required>
+    <div class="invalid-feedback">
+      Credit card number is required
+    </div>
+  </div>   
+</div>
+</div>
+`
 
   const validate = () => {
     'use strict'
   
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     const forms = document.querySelectorAll('.needs-validation')
-    console.log(forms);
-    console.log(Array.from(forms));
+    //console.log('Array de Forms');
+    //console.log(Array.from(forms)[0]);
     // Loop over them and prevent submission
     Array.from(forms).forEach((form, index )=> {
       console.log(form);
-      form.addEventListener('submit', async event => {
-        if (!form.checkValidity()) {
-          
-          event.preventDefault()
-          event.stopPropagation()
-        }else{
-          createProject();
-        }
-  
-        form.classList.add('was-validated')
-      }, false)
-      console.log(index);
-      console.log(form.checkValidity());
+
+      
+        form.addEventListener('submit', async event => {
+          if (!form.checkValidity()) {
+            
+            event.preventDefault()
+            event.stopPropagation()
+          }else{
+            createProject();
+            //addPhaseProjectDates('5');
+            //event.preventDefault()
+            //event.stopPropagation()
+          }
+    
+          form.classList.add('was-validated')
+        }, false)
+        console.log(lastProjectLoadedId);
+        console.log(index);
+        console.log(form.checkValidity());
+      
     })
   }
+      
+  
 
   validate();
   //const radio = radioCheck();
@@ -113,6 +299,22 @@
     yearlyBalanceCalc();
   }
 
+  radInProgress.onclick = () =>{    
+      
+      divPhaseDates.innerHTML = loadPhasesString;
+  }
+
+  radInConcept.onclick = () =>{    
+    
+    divPhaseDates.textContent = '';
+    
+  }
+
+  radOnHold.onclick = () =>{    
+    
+    divPhaseDates.textContent = '';
+  }
+
   //Calculate yearly balance
   const yearlyBalanceCalc = () =>{
     yearlyBalance.innerHTML =  savings - onGoinCost;
@@ -151,8 +353,23 @@
           pr_finish_date: document.getElementById('pr_finish_date').value,
           created_at: new Date(),
           updated_at: new Date()};
+      try{
+        const result = await fetch("http://10.105.169.17:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project)});
+        const rows = await result.json();
+        console.log(rows);
 
-          const result = await fetch("http://10.105.169.17:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project) });
+        if(radInProgress.checked){
+          addPhaseProjectDates(rows[0].id);
+        }
+        
+        
+        
+      }
+      catch(e){
+        console.log(e);
+      }
+          
+         
   }
 
   function radioCheck(){
@@ -163,3 +380,33 @@
       }
     }
   }
+
+  const addPhaseProjectDates = async (projectId) =>{
+    let projectPhases = {
+      pr_id : projectId,
+      understand_start_date : document.getElementById('understand_start_date').value,
+      understand_finish_date : document.getElementById('understand_finish_date').value,
+      assestment_start_date : document.getElementById('assestment_start_date').value,
+      assestment_finish_date : document.getElementById('assestment_finish_date').value,
+      plan_start_date : document.getElementById('plan_start_date').value,
+      plan_finish_date : document.getElementById('plan_finish_date').value,
+      design_start_date : document.getElementById('design_start_date').value,
+      design_finish_date : document.getElementById('design_finish_date').value,
+      execute_start_date : document.getElementById('execute_start_date').value,
+      execute_finish_date : document.getElementById('execute_finish_date').value,
+      transition_start_date : document.getElementById('transition_start_date').value,
+      transition_finish_date : document.getElementById('transition_finish_date').value,
+      support_start_date : document.getElementById('support_start_date').value,
+      support_finish_date : document.getElementById('support_finish_date').value,
+      created_at : new Date(),
+      updated_at : new Date()
+    };
+
+    const result = await fetch("http://10.105.169.17:3000/phaseDate/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(projectPhases) })
+  }
+
+
+
+  
+
+

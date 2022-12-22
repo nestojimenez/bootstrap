@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 var path = require('path');
-const projects = require('./routes/projectsRoutes')
+const projects = require('./routes/projectsRoutes');
+const phaseProject = require('./routes/phase_datesRoutes');
 
 connect();
 
@@ -12,6 +13,7 @@ app.get("/", (req, res)=> res.sendFile(`${__dirname}/load_project.html`))
 
 ///////Routes///////////////////////////////////////////////
 projects(app);
+phaseProject(app);
 
 ////////Function Connect///////////////////////////////////
 async function connect(){
