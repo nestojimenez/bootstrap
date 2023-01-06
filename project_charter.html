@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="project_charter.css">
+</head>
+<body>
+    <!-- Navigation Bar
+        ---------------------------style="overflow: hidden; /* Hide scrollbars */"
+    -------------------------------->
+    <nav class="navbar navbar-expand-lg bg-transparent m-0 p-0">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+            <img src="images/Flex Logo, Blue.png" alt="Logo" width="150" height="72" class="d-inline-block align-text-top">
+            <br>Tijuana Automation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="automation_flex.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Projects</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Automation Tools
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Expenses</a></li>
+                            <li><a class="dropdown-item" href="#">Project Charters</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="team_members.html">Team Members</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!--End of Navigation Bar------>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-4">
+                <!--Project General Data-->
+                <div class="card mb-3 general-data">
+                    
+                    <div class="card-body ">
+                        <h5 class="card-title text-light">Project General Data</h5>
+                        
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start general-data text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Project Cost</div>
+                                    Total project (Hardware + Engineering Hours)
+                                </div>
+                                <span id="project_cost" class="badge bg-primary rounded-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start general-data text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">On Going</div>
+                                    Possible Impact on current process yearly cost
+                                </div>
+                                <span id="ongoing_cost" class="badge bg-primary rounded-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start general-data text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Project Savings</div>
+                                    Project impact on savings
+                                </div>
+                                <span id="project_savings" class="badge bg-primary rounded-pill">$1500</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start general-data text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Yearly Balance</div>
+                                    Total Savings - OnGoin Cost
+                                </div>
+                                <span id="yearly_balance" class="badge bg-primary rounded-pill">$1500</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start general-data text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Payback</div>
+                                    In months
+                                </div>
+                                <span id="payback" class="badge bg-primary rounded-pill">$1500</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!--Automation Driver-->
+                <div class="card mb-3 automation-driver">
+                    <div class="card-body ">
+
+                        <h5 class="card-title text-light">Automation Driver and Project Status</h5>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="fs-6 text-light">Safety and Ergonomics</p>
+                            </div>
+                            <div class="col-6">
+                                <div class="progress">
+                                    <div id="dri_safety" class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <p class="fs-6 text-light">No Impact</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="fs-6 text-light">Quality</p>
+                            </div>
+                            <div class="col-6">
+                                <div class="progress">
+                                    <div id="dri_quality" class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <p class="fs-6 text-light">Some Impact</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="fs-6 text-light">Improve Capacity</p>
+                            </div>
+                            <div class="col-6">
+                                <div class="progress">
+                                    <div id="dri_capacity" class="progress-bar progress-bar-striped" role="progressbar" style="width: 75%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <p class="fs-6 text-light">High Impact</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="fs-6 text-light">Customer Requirement</p>
+                            </div>
+                            <div class="col-6">
+                                <div class="progress">
+                                    <div id="dri_req" class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <p class="fs-6 text-light">High Impact</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="col-4">
+                <!------------------Main Project Information--------------------------------------->
+                <div class="card mb-3" style="background-color: #005486;">
+                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="..." id="project_image">
+                    <div class="card-body">
+                        <h3 id="project_name" class="card-title text-light">My Project Name</h3>
+                        <p class="card-text text-light">Place here a brief description of the project you are working on.</p>
+                        <p class="card-text text-light"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+                <!------Project Timeline------>
+                <div class="card mb-3" style="background-color: #005486;">
+                    <div class="card-body">
+                        <h5 class="card-title text-light">Project Time Line</h5>
+                        <!-----Understan----------->
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text text-light">Understand</p>
+                            </div>
+                            <div class="col-9">
+                                <div class="progress time-line">
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" ></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!---------------------------------->
+                        <!-----Assestment----------->
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text text-light">Assestment</p>
+                            </div>
+                            <div class="col-9">
+                                <div class="progress time-line">
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!---------------------------------->
+                        <!-----Plan----------->
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text text-light">Plan</p>
+                            </div>
+                            <div class="col-9">
+                                <div class="progress time-line">
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!---------------------------------->
+                        <!-----Execute----------->
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text text-light">Execute</p>
+                            </div>
+                            <div class="col-9">
+                                <div class="progress time-line">
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!---------------------------------->
+                        <!-----Transition----------->
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text text-light">Transition</p>
+                            </div>
+                            <div class="col-9">
+                                <div class="progress time-line">
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!---------------------------------->
+                        <!-----Support----------->
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text text-light">Support</p>
+                            </div>
+                            <div class="col-9">
+                                <div class="progress time-line">
+                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!---------------------------------->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card mb-3 expenses-tracker">
+                    <!----------------Expenses Tracker--------------------------------------------->
+                    <div class="card-body ">
+                        <h5 class="card-title text-light">Project Expenses Tracker</h5>
+                        
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Project Cost</div>
+                                    Total project (Hardware + Engineering Hours)
+                                </div>
+                                <span class="badge bg-primary rounded-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">On Going</div>
+                                    Possible Impact on current process yearly cost
+                                </div>
+                                <span class="badge bg-primary rounded-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Project Savings</div>
+                                    Project impact on savings
+                                </div>
+                                <span class="badge bg-primary rounded-pill">$1500</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Yearly Balance</div>
+                                    Total Savings - OnGoin Cost
+                                </div>
+                                <span class="badge bg-primary rounded-pill">$1500</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Payback</div>
+                                    In months
+                                </div>
+                                <span class="badge bg-primary rounded-pill">$1500</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+    
+
+   
+
+   
+
+    <script src="project_charter.js"></script>
+</body>
+</html>

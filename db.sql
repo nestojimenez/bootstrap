@@ -139,4 +139,6 @@ VALUES(
     '2022-07-14',
     '2022-07-14',
     '2022-07-14'
-)
+);
+
+SELECT * FROM projects WHERE id = '20';

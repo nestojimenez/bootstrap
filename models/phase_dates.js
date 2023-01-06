@@ -53,4 +53,16 @@ PhaseDates.createPhaseDates = async (phaseDates) =>{
     }
 }
 
+PhaseDates.getDatesByProjectId = async (pr_id) =>{
+    try{
+        const results = await client.query(`SELECT * FROM projectphasedates WHERE pr_id = $1`, [pr_id]);
+        return results.rows;
+    }
+    catch(e)
+    {
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
 module.exports = PhaseDates;

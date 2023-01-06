@@ -1,0 +1,21 @@
+#project_image {
+    height: 300px;
+    width: auto;
+}
+.general-data{
+    background-color: #009ADD;
+    
+}
+
+.automation-driver{
+    background-color: #BA257D;
+}
+
+.expenses-tracker{
+    background-color: #F1B52C;
+}
+
+.time-line{
+    height: 25px;
+    margin: 5px;
+}

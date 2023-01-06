@@ -33,6 +33,7 @@
   let radInProgress = document.getElementById('in_progress');
   let radInConcept = document.getElementById('concept');
   let radOnHold = document.getElementById('on_hold')
+  const radFinish = document.getElementById('finish');
   let lastProjectLoadedId = '';
   
   const loadPhasesString = `<div class="row gy-3">
@@ -299,6 +300,7 @@
     yearlyBalanceCalc();
   }
 
+  //Verify project Current Status
   radInProgress.onclick = () =>{    
       
       divPhaseDates.innerHTML = loadPhasesString;
@@ -314,6 +316,11 @@
     
     divPhaseDates.textContent = '';
   }
+
+  radFinish.onclick = () =>{
+    divPhaseDates.textContent = '';
+  }
+  //////////////////////////////////////
 
   //Calculate yearly balance
   const yearlyBalanceCalc = () =>{
@@ -354,7 +361,7 @@
           created_at: new Date(),
           updated_at: new Date()};
       try{
-        const result = await fetch("http://10.105.169.17:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project)});
+        const result = await fetch("http://10.105.169.30:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project)});
         const rows = await result.json();
         console.log(rows);
 
@@ -402,7 +409,7 @@
       updated_at : new Date()
     };
 
-    const result = await fetch("http://10.105.169.17:3000/phaseDate/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(projectPhases) })
+    const result = await fetch("http://10.105.169.30:3000/phaseDate/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(projectPhases) })
   }
 
 

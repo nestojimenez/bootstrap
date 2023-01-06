@@ -15,6 +15,13 @@ module.exports = {
         }
     },
 
+    async getProjectById(req, res, next) {
+        const id = req.params.id;
+        const rows = await project.getProjectById(id);
+        res.setHeader("content-type", "application/json");
+        res.send(JSON.stringify(rows));
+    }, 
+
     async readAllProjects (req, res, next) {
         const rows = await project.readAllProjects();
         res.setHeader("content-type", "application/json");
@@ -82,6 +89,21 @@ module.exports = {
         catch(e){
             consologe.log(e);
         }    
+    },
+    
+    async updateProject(req, res, next){
+        let result = {}
+        try{
+            const reqJson = req.body;
+            const rows = await project.updateProject(reqJson);
+            res.setHeader("content-type", "application/json");
+            res.send(JSON.stringify(rows));
+            result.success = true;
+        
+        }catch(e){
+            result.success = false;
+        }
     }
+
     
 }

@@ -44,6 +44,18 @@ Project.createProject = async (project) =>{
     }
 }
 
+Project.getProjectById = async (id) =>{
+    try{
+        const results = await client.query(`SELECT * FROM projects WHERE id = $1`, [id]);
+        return results.rows;
+    }
+    catch(e)
+    {
+        console.log(`Something wrong happend ${e}`);
+        return [];
+    }
+}
+
 Project.readAllProjects = async () =>{
     try{
         const results = await client.query("SELECT * FROM projects");
@@ -122,6 +134,75 @@ Project.filterProjectCustomer = async (cu_name) => {
     catch(e){
         console.log(`Something wrong happend ${e}`);
         return [];
+    }
+}
+
+Project.updateProject = async (project) => {
+    try{
+        const sql = 
+        `
+        UPDATE projects
+        SET
+            pr_name = $1,
+            cu_name = $2,
+            pr_owner = $3,
+            email = $4,
+            init_invest = $5,
+            nre_hours = $6,
+            ongo_headcount = $7,
+            ongo_scrap = $8,
+            ongo_spareparts = $9,
+            ongo_overhead = $10,
+            savings_headcount = $11,
+            savings_scrap = $12,
+            savings_costavoidance = $13,
+            dri_safety = $14,
+            dri_quality = $15,
+            dri_capacity = $16,
+            dri_customerreq = $17,
+            pr_status = $18,
+            capex_po = $19,
+            aware = $20,
+            pr_start_date = $21,
+            pr_finish_date = $22,
+            created_at = $23,
+            updated_at = $24
+        WHERE id = $25
+        `;
+
+        const results = await client.query(sql, 
+            [
+                project.pr_name,
+                project.cu_name,
+                project.pr_owner,
+                project.email,
+                project.init_invest,
+                project.nre_hours,
+                project.ongo_headcount,
+                project.ongo_scrap,
+                project.ongo_spareparts,
+                project.ongo_overhead,
+                project.savings_headcount,
+                project.savings_scrap,
+                project.savings_costavoidance,
+                project.dri_safety,
+                project.dri_quality,
+                project.dri_capacity,
+                project.dri_customerreq ,
+                project.pr_status,
+                project.capex_po,
+                project.aware,
+                project.pr_start_date,
+                project.pr_finish_date,
+                new Date(),
+                new Date(),
+                project.id
+            ]);
+        console.log(results.rows);
+        return results.rows;
+
+    }catch(e){
+        console.log(`Something went wrong ${e}`)
     }
 }
 

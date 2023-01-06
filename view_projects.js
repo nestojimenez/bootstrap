@@ -12,7 +12,7 @@ const totalPayBack = document.getElementById('total_pay_back');
 
 
 const getAllProyects= async ()=>{
-    const result = await fetch("http://10.105.169.17:3000/todos", {method:"GET"});
+    const result = await fetch("http://10.105.169.30:3000/todos", {method:"GET"});
     todos = await result.json();    //All Project Data on JSON format
     
     //fillHeaders(todos);  //Fill table headers with databse fields
@@ -67,7 +67,7 @@ const fillHeaders = (todos) =>{
 }
 
 const getUniqueProejctOwners = async () =>{
-    const result = await fetch("http://10.105.169.17:3000/unique_owner", {method:"GET" });
+    const result = await fetch("http://10.105.169.30:3000/unique_owner", {method:"GET" });
     const owners = await result.json();    //All Project Data on JSON format
     
     owners.forEach(element =>{
@@ -87,7 +87,7 @@ filterOwner.oninput = async ()=> {
     }
     else{
         const project = filterOwner.value;
-        const result = await fetch("http://10.105.169.17:3000/project_filter/" + project, {method:"GET"});
+        const result = await fetch("http://10.105.169.30:3000/project_filter/" + project, {method:"GET"});
         const rows = await result.json();
         //console.log(rows);
         fillTable(rows);
@@ -98,7 +98,7 @@ filterOwner.oninput = async ()=> {
 }
 
 const getUniqueProejctStatus = async () =>{
-    const result = await fetch("http://10.105.169.17:3000/unique_status", {method:"GET" });
+    const result = await fetch("http://10.105.169.30:3000/unique_status", {method:"GET" });
     const status = await result.json();    //All Project Data on JSON format
     
     status.forEach(element =>{
@@ -118,7 +118,7 @@ filterStatus.oninput = async ()=> {
     }
     else{
         const status = filterStatus.value;
-        const result = await fetch("http://10.105.169.17:3000/status_filter/" + status, {method:"GET"});
+        const result = await fetch("http://10.105.169.30:3000/status_filter/" + status, {method:"GET"});
         const rows = await result.json();
         //console.log(rows);
         fillTable(rows);
@@ -129,7 +129,7 @@ filterStatus.oninput = async ()=> {
 }
 
 const getUniqueProejctCustomer = async () =>{
-    const result = await fetch("http://10.105.169.17:3000/unique_customer", {method:"GET" });
+    const result = await fetch("http://10.105.169.30:3000/unique_customer", {method:"GET" });
     const customer = await result.json();    //All Project Data on JSON format
     
     customer.forEach(element =>{
@@ -149,7 +149,7 @@ filterCustomer.oninput = async ()=> {
     }
     else{
         const customer = filterCustomer.value;
-        const result = await fetch("http://10.105.169.17:3000/customer_filter/" + customer, {method:"GET"});
+        const result = await fetch("http://10.105.169.30:3000/customer_filter/" + customer, {method:"GET"});
         const rows = await result.json();
         //console.log(rows);
         fillTable(rows);
