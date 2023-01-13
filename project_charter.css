@@ -15,7 +15,15 @@
     background-color: #F1B52C;
 }
 
+.expenses-graph{
+    background-color: rgba(0,100,50,1) ;
+}
+
 .time-line{
     height: 25px;
     margin: 5px;
+}
+
+.bar-expenses{
+    position: relative;left:25%;top:10%;width: 50px;height:80%;opacity: 0.8; filter: alpha(opacity=80);
 }

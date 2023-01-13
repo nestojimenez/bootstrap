@@ -175,7 +175,7 @@
                     <img src="https://picsum.photos/200/300" class="card-img-top" alt="..." id="project_image">
                     <div class="card-body">
                         <h3 id="project_name" class="card-title text-light">My Project Name</h3>
-                        <p class="card-text text-light">Place here a brief description of the project you are working on.</p>
+                        <p id="pr_description" class="card-text text-light">Place here a brief description of the project you are working on.</p>
                         <p class="card-text text-light"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
@@ -183,15 +183,29 @@
                 <div class="card mb-3" style="background-color: #005486;">
                     <div class="card-body">
                         <h5 class="card-title text-light">Project Time Line</h5>
-                        <!-----Understan----------->
+                        <div class="row">
+                            <div class="col-3">
+
+                            </div>
+                            <div class="col-3">
+                                <p id="date_start" class="text-start text-light" id="date_start">Jan - 2022</p>
+                            </div>
+                            <div class="col-3">
+                                <p id="date_middle" class="text-center text-light" id="date_start">Jan - 2022</p>
+                            </div>
+                            <div class="col-3">
+                                <p id="date_finish" class="text-end text-light" id="date_start">Jan - 2022</p>
+                            </div>
+                        </div>
+                        <!-----Understand----------->
                         <div class="row">
                             <div class="col-3">
                                 <p class="card-text text-light">Understand</p>
                             </div>
                             <div class="col-9">
                                 <div class="progress time-line">
-                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" ></div>
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="understand_start" class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" ></div>
+                                    <div id="understand_duration" class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             
@@ -204,8 +218,8 @@
                             </div>
                             <div class="col-9">
                                 <div class="progress time-line">
-                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="assestment_start" class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="assestment_duration" class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             
@@ -218,8 +232,22 @@
                             </div>
                             <div class="col-9">
                                 <div class="progress time-line">
-                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="plan_start" class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="plan_duration"  class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!---------------------------------->
+                        <!-----Plan----------->
+                        <div class="row">
+                            <div class="col-3">
+                                <p class="card-text text-light">Design</p>
+                            </div>
+                            <div class="col-9">
+                                <div class="progress time-line">
+                                    <div id="design_start" class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="design_duration"  class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             
@@ -232,8 +260,8 @@
                             </div>
                             <div class="col-9">
                                 <div class="progress time-line">
-                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="execute_start" class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="execute_duration" class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             
@@ -246,8 +274,8 @@
                             </div>
                             <div class="col-9">
                                 <div class="progress time-line">
-                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="transition_start"  class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="transition_duration"  class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             
@@ -260,8 +288,8 @@
                             </div>
                             <div class="col-9">
                                 <div class="progress time-line">
-                                    <div class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="support_start" class="progress-bar bg-light" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div id="support_duration" class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                             
@@ -280,40 +308,68 @@
                         <ol class="list-group list-group-numbered">
                             <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
                                 <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Project Cost</div>
+                                    <div class="fw-bold">Project Budget</div>
                                     Total project (Hardware + Engineering Hours)
                                 </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
+                                <span id="pr_budget" class="badge bg-primary rounded-pill">14</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
                                 <div class="ms-2 me-auto">
-                                    <div class="fw-bold">On Going</div>
+                                    <div class="fw-bold">Current Expenses</div>
                                     Possible Impact on current process yearly cost
                                 </div>
-                                <span class="badge bg-primary rounded-pill">14</span>
+                                <span id="pr_expenses"  class="badge bg-primary rounded-pill">14</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
                                 <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Project Savings</div>
+                                    <div class="fw-bold">Amount Remaining from Budget</div>
                                     Project impact on savings
                                 </div>
-                                <span class="badge bg-primary rounded-pill">$1500</span>
+                                <span id="pr_remaining" class="badge bg-primary rounded-pill">$1500</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Yearly Balance</div>
-                                    Total Savings - OnGoin Cost
-                                </div>
-                                <span class="badge bg-primary rounded-pill">$1500</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start expenses-tracker text-light">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">Payback</div>
-                                    In months
-                                </div>
-                                <span class="badge bg-primary rounded-pill">$1500</span>
-                            </li>
+                            
                         </ol>
+                    </div>
+                </div>
+
+                <div class="card mb-3 expenses-graph">
+                    <!----------------Expenses Tracker--------------------------------------------->
+                    <div class="card-body" style="height: 300px;">
+                        <h5 class="card-title text-light">Project Expenses Tracker</h5>
+                        
+                        <div class="row mt-4" style="height: 200px;">
+                            <div class="col-sm-3">
+                                <div class="h6 text-light text-center">Neumatic</div>
+                                <div class="progress bar-expenses" >
+                                    <div id="neumatic_expenses" class="progress-bar bg-danger" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="h6 text-light text-center">Electrical</div>
+                                <div class="progress bar-expenses">
+                                    <div id="electrical_expenses" class="progress-bar bg-primary" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="h6 text-light text-center">Machining</div>
+                                <div class="progress bar-expenses" >
+                                    <div id="machining_expenses" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="h6 text-light text-center">Mechanical</div>
+                                <div class="progress bar-expenses" >
+                                    <div id="mechanical_expenses" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
                     </div>
                 </div>
 

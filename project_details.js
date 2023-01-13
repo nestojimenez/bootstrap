@@ -178,6 +178,7 @@ document.getElementById('letrero').innerHTML = clickedId;
 const projectName = document.getElementById('project_name');
 const customerName = document.getElementById('customer_name');
 const projectOwner = document.getElementById('pr_owner');
+const projectDescription = document.getElementById('pr_description');
 const email = document.getElementById('email');
 const initialInvestment = document.getElementById('initial_investment');
 const nreHours = document.getElementById('nre_hours');
@@ -214,11 +215,13 @@ const payBack = document.getElementById('pay_back');
 const phasesDates = document.getElementById('phase_dates');
 
 const btnOpenProjectcharter = document.getElementById('btn_goto_charter');
+const btnOpenLoadProjectExpenses = document.getElementById('btn_goto_expenses');
+const ip = '10.105.169.39';
 
 
 /////Get Project By Id/////////////////////////////////////////////////
 const getProjectById = async(id)=>{
-    const result = await fetch("http://10.105.169.30:3000/project/getProjectById/" + id, {method:"GET"});
+    const result = await fetch("http://"  +ip + ":3000/project/getProjectById/" + id, {method:"GET"});
     const rows = await result.json();
     console.log(rows);
     
@@ -226,7 +229,7 @@ const getProjectById = async(id)=>{
 
     if(radInProgress.checked){
         phasesDates.innerHTML = loadPhasesString;
-        const resultPhases = await fetch("http://10.105.169.30:3000/phaseDate/getPhaseByProjectId/" + clickedId, {method:"GET"});
+        const resultPhases = await fetch("http://"  +ip + ":3000/phaseDate/getPhaseByProjectId/" + clickedId, {method:"GET"});
         const rowsPhases = await resultPhases.json(); 
         console.log(rowsPhases);
         loadPhaseDates(rowsPhases);
@@ -242,6 +245,7 @@ const loadPrjectDetails = (rows)=>{
         projectName.value = element.pr_name;
         customerName.value = element.cu_name;
         projectOwner.value = element.pr_owner;
+        projectDescription.value = element.pr_description;
         email.value = element.email;
         initialInvestment.value = element.init_invest;
         nreHours.value = element.nre_hours;
@@ -361,9 +365,10 @@ const updateProject= async()  =>{
         pr_start_date: document.getElementById('pr_start_date').value,
         pr_finish_date: document.getElementById('pr_finish_date').value,
         created_at: new Date(),
-        updated_at: new Date()};
+        updated_at: new Date(),
+        pr_description: document.getElementById('pr_description').value};
     try{
-      const result = await fetch("http://10.105.169.30:3000/update_project", {method: "PUT", headers:{"content-type":"application/json"}, body: JSON.stringify(project)});
+      const result = await fetch("http://"  +ip + ":3000/update_project", {method: "PUT", headers:{"content-type":"application/json"}, body: JSON.stringify(project)});
       //const rows = await result.json();
       //console.log(rows);
 
@@ -464,14 +469,26 @@ const addPhaseProjectDates = async (projectId) =>{
     updated_at : new Date()
   };
 
-  const result = await fetch("http://10.105.169.30:3000/phaseDate/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(projectPhases) })
+  const result = await fetch("http://"  +ip + ":3000/phaseDate/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(projectPhases) })
 }
 
+////Load Project Charter
 btnOpenProjectcharter.onclick = ()=>{
   sessionStorage.setItem("idProjectCharter", clickedId);
+  sessionStorage.setItem('projectInitInvestmentCharter', initialInvestment.value);
   console.log(clickedId);
   window.open(
     "project_charter.html", "_blank");
+}
+
+//Load Project Expenses
+btnOpenLoadProjectExpenses.onclick = ()=>{
+  sessionStorage.setItem("idProjectExpenses", clickedId);
+  sessionStorage.setItem("projectName", projectName.value);
+  sessionStorage.setItem('projectInitInvestment', initialInvestment.value);
+  console.log(clickedId);
+  window.open(
+    "project_expenses.html", "_blank");
 }
 
 getProjectById(clickedId);

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Navigation Bar
+        ---------------------------style="overflow: hidden; /* Hide scrollbars */"
+    -------------------------------->
+    <nav class="navbar navbar-expand-lg bg-transparent m-0 p-0">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+            <img src="images/Flex Logo, Blue.png" alt="Logo" width="150" height="72" class="d-inline-block align-text-top">
+            <br>Tijuana Automation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="automation_flex.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Projects</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Automation Tools
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Expenses</a></li>
+                            <li><a class="dropdown-item" href="#">Project Charters</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="team_members.html">Team Members</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+          <div class="py-5 text-center">
+            <!--<img class="d-block mx-auto mb-4" src="./images/Flex Logo, Blue.png" alt="" width="82" height="57">-->
+            <h2>Project Expenses</h2>
+            <p class="lead">Please fill the requested fields in order to load PO information, you can add more rows by clicking on the "Add More Expenses" button.</p>
+          </div>
+      
+          <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+              <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Project Resume</span>
+                <!--<span class="badge bg-primary rounded-pill">3</span>-->
+              </h4>
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Project Total Expenses</h6>
+                    <small id="project_name_result" class="text-muted">Money expended till today</small>
+                  </div>
+                  <span id="project_total_expenses" class="text-muted">$0.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Project Budget</h6>
+                    <small class="text-muted">Amount of money reserve for this project</small>
+                  </div>
+                  <span id="init_investment" class="text-muted">$0.00</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Amount Remaining</h6>
+                    <small class="text-muted">Budget - Expenses</small>
+                  </div>
+                  <span id="amount_remaining" class="text-bold">$0.00</span>
+                </li>
+                
+              </ul>
+
+              
+              <button id ="btn_addmore_expenses" class="w-100 btn btn-primary btn-lg mt-3" type="button">
+                Add more expenses
+              </button>
+        
+
+            </div>
+
+            <!---Project Expenses Data--------------------------------------------------------------------->
+            <div class="col-md-7 col-lg-8">
+                <div class="row">
+                    <div class="col-sm-4">
+                      <h4 class="mb-3">Project Expense for </h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <h3 id="pr_name">My Project</h3>
+                    </div>
+                </div>
+                
+                <form class="needs-validation" novalidate>
+
+                  <div id="more_expenses"  class="row">
+
+                    <!--DIV to replacate to add more rows-->
+                    <div class="row g-3">
+
+                      <div class="col-sm-4">
+                          <label for="firstName" class="form-label">PO Number</label>
+                          <input type="text" class="form-control" id="po_number" placeholder="PO Number" value="" required>
+                          <div class="invalid-feedback">
+                              Po number is required.
+                          </div>
+                      </div>
+    
+                      <div class="col-sm-4">
+                          <label for="lastName" class="form-label">PO Amount</label>
+                          <input type="text" class="form-control" id="po_amount" placeholder="PO Amount" value="" required>
+                          <div class="invalid-feedback">
+                              PO amount is required.
+                          </div>
+                      </div>
+
+                      <div class="col-md-4">
+                          <label for="country" class="form-label">Expense Type</label>
+                          <select class="form-select" id="po_type" required>
+                              <option value="">Select Option</option>
+                              <option>Neumatic</option>
+                              <option>Electrical</option>
+                              <option>Machining</option>
+                              <option>Mechanical</option>
+                          </select>
+                          <div class="invalid-feedback">
+                              Please select a valid Expense Type.
+                          </div>
+                      </div>
+                      <hr class="my-4">
+                    </div><!------------------------------------------------------------->
+                  </div>
+
+                  
+
+                    <button id= "btn_load" class="w-100 btn btn-primary btn-lg" type="submit">Apply Changes</button>
+              </form><!--Aqu val el cierre del form-->
+            </div>
+            
+          </div>
+          
+        </main>
+      
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <p class="mb-1">&copy; 2017–2022 Flex</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+          </ul>
+        </footer>
+    </div>
+    
+       
+
+    <script src="project_expenses.js"></script>
+</body>
+</html>

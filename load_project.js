@@ -359,9 +359,11 @@
           pr_start_date: document.getElementById('pr_start_date').value,
           pr_finish_date: document.getElementById('pr_finish_date').value,
           created_at: new Date(),
-          updated_at: new Date()};
+          updated_at: new Date(),
+          pr_description: document.getElementById('pr_description').value};
+          
       try{
-        const result = await fetch("http://10.105.169.30:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project)});
+        const result = await fetch("http://10.105.169.39:3000/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(project)});
         const rows = await result.json();
         console.log(rows);
 
@@ -409,7 +411,7 @@
       updated_at : new Date()
     };
 
-    const result = await fetch("http://10.105.169.30:3000/phaseDate/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(projectPhases) })
+    const result = await fetch("http://10.105.169.39:3000/phaseDate/create", {method: "POST", headers:{"content-type":"application/json"}, body: JSON.stringify(projectPhases) })
   }
 
 

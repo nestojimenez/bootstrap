@@ -5,7 +5,10 @@ app.use(express.json());
 var path = require('path');
 const projects = require('./routes/projectsRoutes');
 const phaseProject = require('./routes/phase_datesRoutes');
-
+const expensesProject = require('./routes/expensesRoutes');
+//const ip = '10.105.169.39';
+let ip = require('./project_constants');
+let ipx = ip();
 connect();
 
 
@@ -14,6 +17,8 @@ app.get("/", (req, res)=> res.sendFile(`${__dirname}/load_project.html`))
 ///////Routes///////////////////////////////////////////////
 projects(app);
 phaseProject(app);
+expensesProject(app);
+
 
 ////////Function Connect///////////////////////////////////
 async function connect(){
@@ -35,8 +40,8 @@ app.use(express.static(path.join(__dirname)));
     console.log("My web server is listening..on port 8080");
 })*/
 
-app.listen(3000, '10.105.169.30' || 'localhost', function(){
-    console.log('Aplicacion de NodeJS', + process.pid + 'Iniciada...')
+app.listen(3000, ipx|| 'localhost', function(){
+    console.log('Aplicacion de NodeJS', + process.pid + 'Iniciada...' + ipx)
 });
 
 

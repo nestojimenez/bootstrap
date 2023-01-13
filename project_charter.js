@@ -1,4 +1,5 @@
 let clickedId = sessionStorage.getItem('idProjectCharter');
+let initInvestment = sessionStorage.getItem('projectInitInvestmentCharter');
 //alert(`My Project Is : ${clickedId}`);
 
 const projectCost = document.getElementById('project_cost');
@@ -7,14 +8,37 @@ const projectSavings = document.getElementById('project_savings');
 const yearlyBalance = document.getElementById('yearly_balance');
 const payback = document.getElementById('payback');
 const projectName = document.getElementById('project_name');
+const projectDescription = document.getElementById('pr_description');
 const driverSafety = document.getElementById('dri_safety');
 const driverQuality = document.getElementById('dri_quality');
 const driverCapacity = document.getElementById('dri_capacity');
 const driverRequirement = document.getElementById('dri_req');
 
+//Define progress bars
+const understandStart = document.getElementById('understand_start');
+const understandDuration = document.getElementById('understand_duration');
+const assestmentStart = document.getElementById('assestment_start');
+const assestmentDuration = document.getElementById('assestment_duration');
+const designStart = document.getElementById('design_start');
+const designDuration = document.getElementById('design_duration');
+const planStart = document.getElementById('plan_start');
+const planDuration = document.getElementById('plan_duration');
+const executeStart = document.getElementById('execute_start');
+const executeDuration = document.getElementById('execute_duration');
+const transitionStart = document.getElementById('transition_start');
+const transitionDuration = document.getElementById('transition_duration');
+const supportStart = document.getElementById('support_start');
+const supportDuration = document.getElementById('support_duration');
+
+//Define Timeline Start, Middle an Finish Dates
+const startDate = document.getElementById('date_start');
+const finishDate = document.getElementById('date_finish');
+
+const ip = '10.105.169.39';
+
 /////Get Project By Id/////////////////////////////////////////////////
 const getProjectById = async(id)=>{
-    const result = await fetch("http://10.105.169.30:3000/project/getProjectById/" + id, {method:"GET"});
+    const result = await fetch("http://" + ip + ":3000/project/getProjectById/" + id, {method:"GET"});
     const rows = await result.json();
     console.log(rows);
     
@@ -25,16 +49,39 @@ const getProjectById = async(id)=>{
 }
 
 const getProjectPhaseDates = async(id) =>{
-    const resultPhases = await fetch("http://10.105.169.30:3000/phaseDate/getPhaseByProjectId/" + id, {method:"GET"});
+    const resultPhases = await fetch("http://" + ip + ":3000/phaseDate/getPhaseByProjectId/" + id, {method:"GET"});
     const rowsPhases = await resultPhases.json(); 
     console.log(rowsPhases);
     timeLine(rowsPhases);
 }
 
+const getExpensesByProyectId = async (clickedId) => {
+    const resultPhases = await fetch("http://" + ip + ":3000/expenses/getExpensesById/" + clickedId, {method:"GET"});
+    const result = await resultPhases.json()
+    console.log(result);
+    calculateTotalExpenses(result);
+}
+/////Calculate project expenses and filed required data on page
+const calculateTotalExpenses = (results) =>{
+    let totalExpenses = 0.0;
+    results.forEach(element =>{
+        totalExpenses += Number(element.amount)
+    })
+    document.getElementById('pr_expenses').textContent = '$ ' + totalExpenses;
+    document.getElementById('pr_budget').textContent = '$ ' + initInvestment;
+    document.getElementById('pr_remaining').textContent = '$ ' + (Number(initInvestment) - Number(totalExpenses));
+
+    /*if((Number(initInvestment) - Number(totalExpenses)) < 0){
+        document.getElementById('amount_remaining').style.backgroundColor = "red";
+    }else{
+        document.getElementById('amount_remaining').style.backgroundColor = "white";
+    }*/
+}
 ///Load Main Data
 const loadMainData = (rows)=>{
     rows.forEach(element =>{
         projectName.textContent = element.pr_name;
+        projectDescription.textContent = element.pr_description;
     })
 }
 //Load Project General Data
@@ -59,46 +106,7 @@ const loadGeneralData = (rows)=>{
         //Payback
         const pay = ((cost * 12)/(savings - ongoing)).toFixed(2);
         payback.textContent = `${pay} months`
-        //OnGoingCost
-        /*//Load Proejct Data
-        projectName.value = element.pr_name;
-        customerName.value = element.cu_name;
-        projectOwner.value = element.pr_owner;
-        email.value = element.email;
-        initialInvestment.value = element.init_invest;
-        nreHours.value = element.nre_hours;
-        //Load ongoin cost
-        headCountOnGoinCost.value = element.ongo_headcount;
-        scrapOnGoin.value = element.ongo_scrap;
-        sparePartsOnGoinCost.value = element.ongo_spareparts;
-        overHeadOnGoing.value = element.ongo_overhead;
-        //Load Savings
-        headCountSavings.value = element.savings_headcount;
-        scrapSavings.value = element.savings_scrap;
-        costAvoidanceSavings.value = element.savings_costavoidance;
-        //Load Automation Driver
-        driverSafety.value = element.dri_safety;
-        driverQuality.value = element.dri_quality;
-        driverCapacity.value = element.dri_capacity;
-        driverCustomerRequirement.value = element.dri_customerreq;
-        capexPO.checked = element.capex_po;
-        aware.checked = element.aware;
-        //Load Project Initial Status
-        switch(element.pr_status){
-            case 'concept':
-                radConcept.checked = true;
-                break;
-            case 'in_progress':
-                radInProgress.checked = true;
-                break;
-            case 'on_hold':
-                radOnHold.checked = true;
-                break;
-            default:
-                radConcept.checked = true;
-        }
-        prStartDate.value = element.pr_start_date.slice(0,10);
-        prFinishDate.value = element.pr_finish_date.slice(0,10);*/
+        
 
     })
 
@@ -148,24 +156,32 @@ const loadAutomationDriver = (rows =>{
 const timeLine = (rows) =>{
     let daysUnderstand=0;
     let daysAssesment = 0;
+    let daysPlan = 0;
+    let daysDesign = 0;
     let daysExecute = 0;
     let daysTransition = 0;
     let daysSupport = 0;
     let daysProject = 0;
     let sToStartUnderstand = 0;
     let sToStartAssestment = 0;
+    let sToStartPlan = 0;
+    let sToStartDesign = 0;
     let sToStartExecute = 0;
     let sToStartTransition = 0;
     let sToStartSupport = 0;
 
     let daysUnderstandPer=0;
     let daysAssesmentPer = 0;
+    let daysPlanPer = 0;
+    let daysDesignPer = 0;
     let daysExecutePer = 0;
     let daysTransitionPer = 0;
     let daysSupportPer = 0;
     let daysProjectPer = 0;
     let sToStartUnderstandPer = 0;
     let sToStartAssestmentPer = 0;
+    let sToStartPlanPer = 0;
+    let sToStartDesignPer = 0;
     let sToStartExecutePer = 0;
     let sToStartTransitionPer = 0;
     let sToStartSupportPer = 0;
@@ -174,24 +190,70 @@ const timeLine = (rows) =>{
         
         //Project each Phase Duration in Dates + Complete Project Duration in days
         daysUnderstand = calculateDaysBetweenDates(element.understand_start_date, element.understand_finish_date);
-        console.log(daysUnderstand);
+        console.log('Days Understand ' + daysUnderstand);
         daysAssesment = calculateDaysBetweenDates(element.assestment_start_date, element.assestment_finish_date);
-        console.log(daysAssesment);
+        console.log('Days Assestment ' + daysAssesment);
+        daysPlan = calculateDaysBetweenDates(element.plan_start_date, element.plan_finish_date);
+        console.log('Days Plan ' + daysPlan);
+        daysDesign= calculateDaysBetweenDates(element.design_start_date, element.design_finish_date);
+        console.log('Days Design ' + daysDesign);
         daysExecute = calculateDaysBetweenDates(element.execute_start_date, element.execute_finish_date);
-        console.log(daysExecute);
+        console.log('Days Execute ' + daysExecute);
         daysTransition = calculateDaysBetweenDates(element.transition_start_date, element.transition_finish_date);
-        console.log(daysTransition);
+        console.log('Days Transition ' + daysTransition);
         daysSupport = calculateDaysBetweenDates(element.support_start_date, element.support_finish_date);
-        console.log(daysSupport);
+        console.log('Days Support ' + daysSupport);
         daysProject = calculateDaysBetweenDates(element.understand_start_date, element.support_finish_date);
-        console.log(daysProject);
+        console.log('Days Project ' +daysProject);
 
         //Amount of days between Project Start and the Start of Each Phase, obviusly the days between Project Start and Understan Start are equal 0.
         sToStartUnderstand = 0;
+        console.log('Start Days Understand ' + sToStartUnderstand);
         sToStartAssestment = calculateDaysBetweenDates(element.understand_start_date, element.assestment_start_date);
+        console.log('Start Days Assestment ' + sToStartAssestment);
+        sToStartPlan = calculateDaysBetweenDates(element.understand_start_date, element.plan_start_date);
+        console.log('Start Days Plan ' + sToStartPlan);
+        sToStartDesign = calculateDaysBetweenDates(element.understand_start_date, element.design_start_date);
+        console.log('Start Days Design ' + sToStartDesign);
         sToStartExecute = calculateDaysBetweenDates(element.understand_start_date, element.execute_start_date);
+        console.log('Start Days execute ' + sToStartExecute);
         sToStartTransition = calculateDaysBetweenDates(element.understand_start_date, element.transition_start_date);
+        console.log('Start Days Transition ' + sToStartTransition);
         sToStartSupport= calculateDaysBetweenDates(element.understand_start_date, element.support_start_date);
+        console.log('Start Days Support ' + sToStartSupport);
+
+        //Calculate project duration and project start to start for each phase, but in %
+        daysUnderstandPer = (daysUnderstand / daysProject) * 100;
+        daysAssesmentPer = (daysAssesment / daysProject) * 100;
+        daysPlanPer = (daysPlan / daysProject) * 100;
+        daysDesignPer = (daysDesign / daysProject) * 100;
+        daysExecutePer = (daysExecute / daysProject) * 100;
+        daysTransitionPer = (daysTransition / daysProject) * 100;
+        daysSupportPer = (daysSupport / daysProject) * 100;
+        sToStartUnderstandPer= 0;
+        sToStartAssestmentPer = (sToStartAssestment / daysProject) * 100;
+        sToStartPlanPer = (sToStartPlan / daysProject) * 100;
+        sToStartDesignPer = (sToStartDesign / daysProject) * 100;
+        sToStartExecutePer = (sToStartExecute / daysProject) * 100;
+        sToStartTransitionPer = (sToStartTransition / daysProject) * 100;
+        sToStartSupportPer = (sToStartSupport / daysProject) * 100;
+
+        //Fill progress bars
+        understandStart.style.width = `0%`;
+        understandDuration.style.width = `${daysUnderstandPer}%`;
+        assestmentStart.style.width = `${sToStartAssestmentPer}%`;
+        assestmentDuration.style.width = `${daysAssesmentPer}%`;
+        planStart.style.width = `${sToStartPlanPer}%`;
+        planDuration.style.width = `${daysPlanPer}%`;
+        designStart.style.width = `${sToStartDesignPer}%`;
+        designDuration.style.width = `${daysDesignPer}%`;
+        executeStart.style.width = `${sToStartExecutePer}%`;
+        executeDuration.style.width = `${daysExecutePer}%`;
+        transitionStart.style.width = `${sToStartTransitionPer}%`;
+        transitionDuration.style.width = `${daysTransitionPer}%`;
+        supportStart.style.width = `${sToStartSupportPer}%`;
+        supportDuration.style.width = `${daysSupportPer}%`;
+        startDate.textContent = element.understand_start_date.slice(0,10);
     })
     
 }
@@ -226,4 +288,5 @@ const calculateTotalMonthsDifference = (firstDatex, secondDatex) => {
 }
 
 getProjectById(clickedId);
+getExpensesByProyectId(clickedId);
 getProjectPhaseDates(clickedId);

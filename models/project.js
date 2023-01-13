@@ -5,8 +5,8 @@ Project = {};
 Project.createProject = async (project) =>{
     try{
         const sql = `INSERT INTO projects(pr_name,cu_name,pr_owner,email,init_invest,nre_hours,ongo_headcount,ongo_scrap,ongo_spareparts,ongo_overhead,
-            savings_headcount,savings_scrap,savings_costavoidance,dri_safety,dri_quality,dri_capacity,dri_customerreq ,pr_status,capex_po,aware,pr_start_date, pr_finish_date, created_at,updated_at) 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22,$23, $24) RETURNING id`
+            savings_headcount,savings_scrap,savings_costavoidance,dri_safety,dri_quality,dri_capacity,dri_customerreq ,pr_status,capex_po,aware,pr_start_date, pr_finish_date, created_at,updated_at, pr_description) 
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22,$23, $24, $25) RETURNING id`
         const results = await client.query(sql, 
         [
             project.pr_name,
@@ -32,7 +32,8 @@ Project.createProject = async (project) =>{
             project.pr_start_date,
             project.pr_finish_date,
             new Date(),
-            new Date()
+            new Date(),
+            project.pr_description
         ]);
         console.log(results.rows);
         return results.rows;
@@ -166,8 +167,9 @@ Project.updateProject = async (project) => {
             pr_start_date = $21,
             pr_finish_date = $22,
             created_at = $23,
-            updated_at = $24
-        WHERE id = $25
+            updated_at = $24,
+            pr_description = $25
+        WHERE id = $26
         `;
 
         const results = await client.query(sql, 
@@ -196,6 +198,7 @@ Project.updateProject = async (project) => {
                 project.pr_finish_date,
                 new Date(),
                 new Date(),
+                project.pr_description,
                 project.id
             ]);
         console.log(results.rows);

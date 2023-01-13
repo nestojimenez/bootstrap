@@ -4,6 +4,7 @@ CREATE TABLE projects(
     pr_name VARCHAR(255) NOT NULL,
     cu_name VARCHAR(255) NOT NULL,
     pr_owner VARCHAR(255) NOT NULL,
+    pr_description VARCHAR(255),
     email VARCHAR(255) NOT NULL,
     init_invest VARCHAR(80) NOT NULL,
     nre_hours VARCHAR(80) NOT NULL,
@@ -142,3 +143,14 @@ VALUES(
 );
 
 SELECT * FROM projects WHERE id = '20';
+
+DROP TABLE IF EXISTS expenses CASCADE;
+CREATE TABLE expenses(
+    id BIGSERIAL PRIMARY KEY,
+    pr_id VARCHAR(255) NOT NULL,
+    po_number VARCHAR(20) NOT NULL,
+    amount VARCHAR(255) NOT NULL,
+    expense_type VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP(0) NOT NULL,
+    updated_at TIMESTAMP(0) NOT NULL
+);
