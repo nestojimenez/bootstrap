@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <p class="fs-6 text-light">No Impact</p>
+                                <p class="fs-6 text-light" id="txt_safety">No Impact</p>
                             </div>
                         </div>
                         
@@ -132,7 +132,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <p class="fs-6 text-light">Some Impact</p>
+                                <p class="fs-6 text-light" id="txt_quality">Some Impact</p>
                             </div>
                         </div>
 
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <p class="fs-6 text-light">High Impact</p>
+                                <p class="fs-6 text-light" id="txt_capacity">High Impact</p>
                             </div>
                         </div>
 
@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <p class="fs-6 text-light">High Impact</p>
+                                <p class="fs-6 text-light" id="txt_customer">High Impact</p>
                             </div>
                         </div>
                         
@@ -191,7 +191,7 @@
                                 <p id="date_start" class="text-start text-light" id="date_start">Jan - 2022</p>
                             </div>
                             <div class="col-3">
-                                <p id="date_middle" class="text-center text-light" id="date_start">Jan - 2022</p>
+                                <!--<p id="date_middle" class="text-center text-light" id="date_start">Jan - 2022</p>-->
                             </div>
                             <div class="col-3">
                                 <p id="date_finish" class="text-end text-light" id="date_start">Jan - 2022</p>
@@ -325,7 +325,7 @@
                                     <div class="fw-bold">Amount Remaining from Budget</div>
                                     Project impact on savings
                                 </div>
-                                <span id="pr_remaining" class="badge bg-primary rounded-pill">$1500</span>
+                                <span id="pr_remaining" class="badge rounded-pill">$1500</span>
                             </li>
                             
                         </ol>
@@ -333,13 +333,14 @@
                 </div>
 
                 <div class="card mb-3 expenses-graph">
-                    <!----------------Expenses Tracker--------------------------------------------->
-                    <div class="card-body" style="height: 300px;">
+                    <!----------------Expenses Tracker By Type--------------------------------------------->
+                    <div class="card-body" style="height: 350px;">
                         <h5 class="card-title text-light">Project Expenses Tracker</h5>
                         
                         <div class="row mt-4" style="height: 200px;">
                             <div class="col-sm-3">
                                 <div class="h6 text-light text-center">Neumatic</div>
+                                <div class="h6 text-light text-center" id="txt_neumatic_expense">Neumatic</div>
                                 <div class="progress bar-expenses" >
                                     <div id="neumatic_expenses" class="progress-bar bg-danger" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
                                     </div>
@@ -347,6 +348,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="h6 text-light text-center">Electrical</div>
+                                <div class="h6 text-light text-center" id="txt_electrical_expense">Neumatic</div>
                                 <div class="progress bar-expenses">
                                     <div id="electrical_expenses" class="progress-bar bg-primary" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
                                     </div>
@@ -354,6 +356,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="h6 text-light text-center">Machining</div>
+                                <div class="h6 text-light text-center" id="txt_machining_expense">Neumatic</div>
                                 <div class="progress bar-expenses" >
                                     <div id="machining_expenses" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
                                     </div>
@@ -361,6 +364,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="h6 text-light text-center">Mechanical</div>
+                                <div class="h6 text-light text-center" id="txt_mechanical_expense">Neumatic</div>
                                 <div class="progress bar-expenses" >
                                     <div id="mechanical_expenses" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width:50px; height: 70%; position:absolute; top: 30%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">70%
                                     </div>

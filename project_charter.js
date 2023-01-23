@@ -34,6 +34,11 @@ const supportDuration = document.getElementById('support_duration');
 const startDate = document.getElementById('date_start');
 const finishDate = document.getElementById('date_finish');
 
+let expenseNeumatic = 0.0;
+let expenseElectrical = 0.0;
+let expenseMachining = 0.0;
+let expenseMecaninc = 0.0;
+
 const ip = '10.105.169.39';
 
 /////Get Project By Id/////////////////////////////////////////////////
@@ -60,22 +65,76 @@ const getExpensesByProyectId = async (clickedId) => {
     const result = await resultPhases.json()
     console.log(result);
     calculateTotalExpenses(result);
+    getExpensesByType(result);
 }
+
+const getExpensesByType = (rows) =>{
+    rows.forEach(element=>{
+        if(element.expense_type === 'Neumatic'){
+            expenseNeumatic += Number(element.amount);
+        }
+        else if(element.expense_type === 'Electrical'){
+            expenseElectrical += Number(element.amount);
+        }
+        else if(element.expense_type === 'Machining'){
+            expenseMachining += Number(element.amount);
+        }
+        else{
+            expenseMecaninc += Number(element.amount);
+        }
+
+        document.getElementById('txt_neumatic_expense').textContent = '$ ' + numberWithCommas(parseFloat(expenseNeumatic).toFixed(2));
+        document.getElementById('txt_electrical_expense').textContent = '$ ' + numberWithCommas(parseFloat(expenseElectrical).toFixed(2));
+        document.getElementById('txt_machining_expense').textContent = '$ ' + numberWithCommas(parseFloat(expenseMachining).toFixed(2));
+        document.getElementById('txt_mechanical_expense').textContent = '$ ' + numberWithCommas(parseFloat(expenseMecaninc).toFixed(2));
+
+        let totalExpenses = expenseNeumatic + expenseElectrical + expenseMachining + expenseMecaninc;
+        let percentageNeumatic = (expenseNeumatic / totalExpenses)*100;
+        let percentageElectrical= (expenseElectrical / totalExpenses)*100;
+        let percentageMachining = (expenseMachining / totalExpenses)*100;
+        let percentageMechaninc= (expenseMecaninc / totalExpenses)*100;
+
+        document.getElementById('neumatic_expenses').style.height = percentageNeumatic + '%';
+        document.getElementById('neumatic_expenses').style.top = (100 - percentageNeumatic) + '%';
+        document.getElementById('neumatic_expenses').textContent = percentageNeumatic.toString().slice(0,5) + '%';
+
+        document.getElementById('electrical_expenses').style.height = percentageElectrical + '%';
+        document.getElementById('electrical_expenses').style.top = (100 - percentageElectrical) + '%';
+        document.getElementById('electrical_expenses').textContent = percentageElectrical.toString().slice(0,5) + '%';
+
+        document.getElementById('machining_expenses').style.height = percentageMachining + '%';
+        document.getElementById('machining_expenses').style.top = (100 - percentageMachining) + '%';
+        document.getElementById('machining_expenses').textContent = percentageMachining.toString().slice(0,5) + '%';
+
+        document.getElementById('mechanical_expenses').style.height = percentageMechaninc + '%';
+        document.getElementById('mechanical_expenses').style.top = (100 - percentageMechaninc) + '%';
+        document.getElementById('mechanical_expenses').textContent = percentageMechaninc.toString().slice(0,5) + '%';
+
+        
+    })
+}
+
+////Add comma separator to Number///////////
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 /////Calculate project expenses and filed required data on page
 const calculateTotalExpenses = (results) =>{
     let totalExpenses = 0.0;
     results.forEach(element =>{
         totalExpenses += Number(element.amount)
     })
-    document.getElementById('pr_expenses').textContent = '$ ' + totalExpenses;
-    document.getElementById('pr_budget').textContent = '$ ' + initInvestment;
-    document.getElementById('pr_remaining').textContent = '$ ' + (Number(initInvestment) - Number(totalExpenses));
+    document.getElementById('pr_expenses').textContent = '$ ' + numberWithCommas(parseFloat(totalExpenses).toFixed(2));
+    document.getElementById('pr_budget').textContent = '$ ' + numberWithCommas(parseFloat(initInvestment).toFixed(2));
+    document.getElementById('pr_remaining').textContent = '$ ' + numberWithCommas((Number(initInvestment) - Number(totalExpenses)).toFixed(2));
+    
 
-    /*if((Number(initInvestment) - Number(totalExpenses)) < 0){
-        document.getElementById('amount_remaining').style.backgroundColor = "red";
+    if((Number(initInvestment) - Number(totalExpenses)) < 0){
+        document.getElementById('pr_remaining').style.backgroundColor = "red";
     }else{
-        document.getElementById('amount_remaining').style.backgroundColor = "white";
-    }*/
+        document.getElementById('pr_remaining').classList.add('bg-primary');
+    }
 }
 ///Load Main Data
 const loadMainData = (rows)=>{
@@ -90,19 +149,19 @@ const loadGeneralData = (rows)=>{
         //Project Cost
         const cost = Number(element.init_invest) + Number(element.nre_hours);
         console.log(cost);
-        projectCost.textContent = `$ ${cost}`;
+        projectCost.textContent = `$ ${numberWithCommas(cost)}`;
         //On Goin Cost
         const ongoing = Number(element.ongo_headcount) + Number(element.ongo_scrap) + Number(element.ongo_spareparts) + Number(element.ongo_overhead);
         console.log(ongoing);
-        onGoingCost.textContent = `$ ${ongoing}`;
+        onGoingCost.textContent = `$ ${numberWithCommas(ongoing)}`;
         //Project Savings
         const savings = Number(element.savings_headcount) + Number(element.savings_scrap) + Number(element.savings_costavoidance);
         console.log(savings);
-        projectSavings.textContent = `$ ${savings}`;
+        projectSavings.textContent = `$ ${numberWithCommas(savings)}`;
         //Yearly Balance
         const yearly = savings - ongoing;
         console.log(yearly);
-        yearlyBalance.textContent = `$ ${yearly}`;
+        yearlyBalance.textContent = `$ ${numberWithCommas(yearly)}`;
         //Payback
         const pay = ((cost * 12)/(savings - ongoing)).toFixed(2);
         payback.textContent = `${pay} months`
@@ -148,6 +207,11 @@ const loadAutomationDriver = (rows =>{
         }else{
             driverRequirement.style.width = '100%';
         }
+
+        document.getElementById('txt_safety').textContent = element.dri_safety;
+        document.getElementById('txt_quality').textContent = element.dri_quality;
+        document.getElementById('txt_capacity').textContent = element.dri_capacity
+        document.getElementById('txt_customer').textContent = element.dri_customerreq;
     })
 })
 
@@ -254,6 +318,7 @@ const timeLine = (rows) =>{
         supportStart.style.width = `${sToStartSupportPer}%`;
         supportDuration.style.width = `${daysSupportPer}%`;
         startDate.textContent = element.understand_start_date.slice(0,10);
+        finishDate.textContent = element.support_finish_date.slice(0,10);
     })
     
 }

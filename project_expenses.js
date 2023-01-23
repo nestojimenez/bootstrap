@@ -124,9 +124,9 @@ const calculateTotalExpenses = (results) =>{
     results.forEach(element =>{
         totalExpenses += Number(element.amount)
     })
-    document.getElementById('project_total_expenses').textContent = '$ ' + totalExpenses;
-    document.getElementById('init_investment').textContent = '$ ' + initInvestment;
-    document.getElementById('amount_remaining').textContent = '$ ' + (Number(initInvestment) - Number(totalExpenses));
+    document.getElementById('project_total_expenses').textContent = '$ ' + parseFloat(totalExpenses).toFixed(2);
+    document.getElementById('init_investment').textContent = '$ ' + parseFloat(initInvestment).toFixed(2);
+    document.getElementById('amount_remaining').textContent = '$ ' + parseFloat(Number(initInvestment) - Number(totalExpenses)).toFixed(2);
 
     if((Number(initInvestment) - Number(totalExpenses)) < 0){
         document.getElementById('amount_remaining').style.backgroundColor = "red";

@@ -487,8 +487,7 @@ btnOpenLoadProjectExpenses.onclick = ()=>{
   sessionStorage.setItem("projectName", projectName.value);
   sessionStorage.setItem('projectInitInvestment', initialInvestment.value);
   console.log(clickedId);
-  window.open(
-    "project_expenses.html", "_blank");
+  window.open("project_expenses.html", "_blank");
 }
 
 getProjectById(clickedId);
